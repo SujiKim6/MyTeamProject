@@ -1,5 +1,1 @@
-import { Meteor } from 'meteor/meteor';
-
-Meteor.startup(() => {
-  // code to run on server at startup
-});
+//테스트용 코드 및 초기화 작업코드를 적는 곳입니다.

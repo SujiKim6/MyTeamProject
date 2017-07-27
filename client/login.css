@@ -1,0 +1,8 @@
+.btn-primary {
+    position:relative;
+    float:right;
+}
+
+.btn-default {
+    float:left;
+}
