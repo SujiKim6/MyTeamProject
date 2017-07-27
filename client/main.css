@@ -1,4 +1,29 @@
 /* CSS declarations go here */
+.btn-primary {
+    position:relative;
+    alignment: center;
+}
+
+#title {
+    text-align: center;
+}
+
+.btn-primary {
+    position:relative;
+    float:right;
+}
+
+.btn-default {
+    float:left;
+}
+
+.navbar-brand {
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+}
+
 .well {
 
 }
+
