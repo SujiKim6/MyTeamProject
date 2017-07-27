@@ -4,3 +4,4 @@ Router.configure({
 
 //맨 처음 화면은 login template으로
 Router.route('/', 'login');
+Router.route('/', 'join');
