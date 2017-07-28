@@ -10,3 +10,7 @@ Router.route('/projectMain', 'projectMain');
 Router.route('/addProject', 'addProject');
 Router.route('/calender', 'calender');
 Router.route('/tab', 'tab');
+Router.route('/proMain', 'proMain');
+Router.route('/table','table');
+Router.route('/proAdd', 'proAdd');
+Router.route('/proDelete', 'proDelete');
