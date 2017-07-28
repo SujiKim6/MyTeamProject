@@ -11,10 +11,12 @@
 #title2 {
     text-align: center;
     font-weight: bold;
+    font-size: 25px;
 }
 
 #date {
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .btn-primary {

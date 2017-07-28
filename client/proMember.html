@@ -1,0 +1,26 @@
+<template name="proMember">
+
+       <div row>
+            <div class="col-xs-10">
+                 <div id="title2">프로젝트 구성원</div>
+            </div>
+            <div class="col-xs-2">
+                <a href="#" class="btn btn-primary">편집</a>
+            </div>
+        </div>
+
+    <div class="progress">
+        <div class="progress-bar" style="width: 60%;">60%</div>
+    </div>
+    {{> table}}
+
+    <div>회원초대
+    <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+    </div>
+
+    <br>
+
+    <a href="/proMain" class="btn btn-default">취소</a>
+    <a href="/proMain" class="btn btn-primary">완료</a>
+
+</template>

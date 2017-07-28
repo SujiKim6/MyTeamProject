@@ -14,4 +14,7 @@ Router.route('/proMain', 'proMain');
 Router.route('/table','table');
 Router.route('/proAdd', 'proAdd');
 Router.route('/proDelete', 'proDelete');
+Router.route('/checkTable', 'checkTable');
 Router.route('/emailSend', 'emailSend');
+Router.route('/proMember', 'proMember');
+

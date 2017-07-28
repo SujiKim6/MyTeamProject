@@ -1,13 +1,11 @@
 
 #exTab .tab-content {
-  color : white;
-  background-color: #428bca;
+  color : black;
   padding : 5px 15px;
 }
 
 #exTab2 h3 {
-  color : white;
-  background-color: #428bca;
+  color : black;
   padding : 5px 15px;
 }
 
@@ -24,7 +22,6 @@
 }
 
 #exTab3 .tab-content {
-  color : white;
-  background-color: #428bca;
+  color : black;
   padding : 5px 15px;
 }
