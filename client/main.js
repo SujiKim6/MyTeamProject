@@ -9,3 +9,4 @@ Router.route('/mypage', 'mypage');
 Router.route('/projectMain', 'projectMain');
 Router.route('/addProject', 'addProject');
 Router.route('/calender', 'calender');
+Router.route('/tab', 'tab');
