@@ -1,20 +1,18 @@
 <template name="table">
     <table class="table">
-        <thead align="center">
         <tr>
-            <th align="center">NO</th>
-            <th align="center">리스트 항목</th>
+            <th>No</th>
+            <th>리스트 항목</th>
         </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Name1</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Name2</td>
-        </tr>
-        </tbody>
+        {{#each array}}
+            <tr>
+                <td>{{no}}</td>
+                <td>{{content}}</td>
+            </tr>
+        {{/each}}
     </table>
+
+    <div><input id="inpAdd" type="text" name="text" placeholder="추가할 내용을 입력해주세요"/><button id="btnAdd">추가</button></div>
+    <div><input id="inpDelete" type="text" name="text" placeholder="삭제하고 싶은 행을 선택해주세요"/><button id="btnDelete">삭제</button></div>
+
 </template>
