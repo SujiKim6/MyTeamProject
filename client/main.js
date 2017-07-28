@@ -10,3 +10,4 @@ Router.route('/projectMain', 'projectMain');
 Router.route('/addProject', 'addProject');
 Router.route('/calender', 'calender');
 Router.route('/tab', 'tab');
+Router.route('/emailSend', 'emailSend');
