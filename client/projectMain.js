@@ -1,0 +1,3 @@
+Template.projectMain.events({
+
+})
