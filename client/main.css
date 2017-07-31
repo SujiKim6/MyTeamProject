@@ -106,4 +106,6 @@ input:checked + .slider:before {
     border-radius: 50%;
 }
 
-
+.tab {
+    width: 49.7%;
+}
