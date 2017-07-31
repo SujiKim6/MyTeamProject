@@ -7,6 +7,11 @@
 
     {{> proTable}}
 
+    <div class="col-xs-10"><input id="inpAdd" type="text" name="text" placeholder="해야할 일을 추가해주세요."/></div>
+    <div class="col-xs-2">
+        <button id="btnAdd">추가</button>
+    </div>
+
     <div class="col-xs-10">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
             <span class="caret"></span>
@@ -21,20 +26,6 @@
         <a href="/proMain" class="btn btn-default">삭제</a>
     </div>
 
-    <div class="col-xs-10">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" role="menu">
-            <li><a href="#"> 삭제할 프로젝트를 선택해주세요. </a></li>
-            <li><a href="#"> 1 </a></li>
-        </ul>
-    </div>
-
-    <div class="col-xs-2">
-        <a href="/proMain" class="btn btn-default">삭제</a>
-    </div>
-
-    <a href="/proMembers" class="btn btn-default">취소</a>
-    <a href="/proMembers" class="btn btn-primary">완료</a>
+    <a href="/tab" class="btn btn-default">취소</a>
+    <a href="/tab" class="btn btn-primary">완료</a>
 </template>

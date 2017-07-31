@@ -17,3 +17,4 @@ Router.route('/membersTable','membersTable');
 Router.route('/proMembersEdit', 'proMembersEdit');
 Router.route('/checkTable', 'checkTable');
 Router.route('/emailSend', 'emailSend');
+Router.route('/proPageEdit', 'proPageEdit');
