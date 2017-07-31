@@ -6,15 +6,16 @@ Router.configure({
 Router.route('/', 'login');
 Router.route('/join', 'join');
 Router.route('/mypage', 'mypage');
-Router.route('/projectMain', 'projectMain');
 Router.route('/addProject', 'addProject');
 Router.route('/calender', 'calender');
 Router.route('/tab', 'tab');
 Router.route('/proMain', 'proMain');
-Router.route('/table','table');
+Router.route('/proTable','proTable');
+Router.route('/membersTable','membersTable');
 Router.route('/proAdd', 'proAdd');
 Router.route('/proDelete', 'proDelete');
 Router.route('/checkTable', 'checkTable');
 Router.route('/emailSend', 'emailSend');
-Router.route('/proMember', 'proMember');
+Router.route('/proMembers', 'proMembers');
+Router.route('/proMembersEdit', 'proMembersEdit');
 

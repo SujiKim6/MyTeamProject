@@ -1,16 +1,16 @@
-Template.table.onCreated(function() {
+Template.projectTable.onCreated(function() {
 });
 
-Template.table.onRendered(function() {
+Template.projectTable.onRendered(function() {
 });
 
-Template.table.helpers({
+Template.projectTable.helpers({
     array: function() {
         return todolistDB.find({}).fetch();
     }
 });
 
-Template.table.events({
+Template.projectTable.events({
     'click #btnDelete': function(evt, tmpl) {
         if(confirm('정말 삭제하시겠습니까?')) {
             todolistDB.remove({no: $('#inpDelete').val()});
