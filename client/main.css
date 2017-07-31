@@ -7,6 +7,11 @@
 #title {
     text-align: center;
 }
+#addProjectPlusBtn {
+    border: 0;
+    outline: 0;
+    background-color: inherit;
+}
 
 #title2 {
     text-align: center;
