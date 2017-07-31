@@ -19,7 +19,7 @@ Template.proPage.events({
     'click #btnAdd': function(evt, tmpl) {
         var strAdd = $('#inpAdd').val();
 
-        todolistDB.insert({
+        todoDB.insert({
             no: require("mongodb-autoincrement"),
             content: strAdd
         });
