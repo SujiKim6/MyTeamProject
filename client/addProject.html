@@ -5,35 +5,62 @@
                 <label class="control-label" for="focusedInput" style="margin-top: 10%">프로젝트 이름 </label>
             </div>
             <div class="col-xs-8 col-sm-9 col-md-10">
-                <input class="form-control" id="focusedInput"  type="text" value="내용을 입력해주세요">
+                <input class="form-control" id="focusedInput"  type="text" placeholder="내용을 입력해주세요">
             </div>
-        </div>
+        </div><br><br>
+
+
+        <!--안해 십창 알아서 UI 구성해줘 말항 십창 아니 왜 화면 키우니까 말을 안듣니 이 자싁들아..-서진(무섭댱 우리 서진띠)-->
         <div class="project_date">
             <div class="col-xs-4 col-sm-3 col-md-2">
                 <label class="control-label" for="focusedInput" style="margin-top: 10%">프로젝트 기간 </label>
             </div>
             <div class="col-xs-3 col-sm-4 col-md-4">
-                <a href="#" class="btn btn-default">17-07-27</a>
-                <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span></a>
+                <!--<a href="#" class="btn btn-default">17-07-27</a>-->
+                <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="true">17-07-27</a>
                 <ul class="dropdown-menu">
                     <li><a href="#">달력</a></li>
                 </ul>
             </div>
             <div class="col-xs-1 col-sm-1 col-md-2">
-                <b>~</b>
+                <b style="align-items: center"> ~ </b>
             </div>
             <div class="col-xs-3 col-sm-4 col-md-4">
-                <a href="#" class="btn btn-default">17-07-28</a>
-                <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="caret"></span></a>
+                <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="true">17-07-28</a>
                 <ul class="dropdown-menu">
                     <li><a href="#">달력</a></li>
                 </ul>
             </div>
         </div>
-    </div>
+    </div> <br>
     <div class="form-group">
-        <label class="control-label" for="inputLarge">Large input</label>
-        <input class="form-control input-lg" type="text" id="inputLarge">
+        <label class="control-label" for="inputLarge">프로젝트 목표 (50자이내)</label>
+        <input class="form-control input-lg" type="text" placeholder="내용을 입력해주세요" id="inputLarge">
+    </div>
+
+    <label class="control-label" for="inputLarge">프로젝트 할일 추가</label>
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="할일을 추가하세요." aria-describedby="basic-addon2">
+        <!-- +부분에 버튼 넣으면 될듯! -희림 // 넣었습니당 -수지 -->
+        <span class="input-group-addon" id="basic-addon2">
+            <button type="button" id="addProjectPlusBtn">
+                +
+            </button>
+        </span>
+
+    </div> <br>
+    <div>
+        <label class="control-label" for="inputLarge">공개여부</label>
+        <div>
+            <form>
+                <input type="radio" name="gender" value="male" checked> 공개 &nbsp;&nbsp;
+                <input type="radio" name="gender" value="female"> 비공개
+            </form>
+        </div>
+    </div> <br>
+
+    <div class="col-md-4 text-center">
+       <a href="#" class="btn btn-default">확인</a>
     </div>
 
 </template>

@@ -1,19 +1,17 @@
 <template name="proMain">
-    <div class="row">
-        <div class="col-xs-6">
-            <a href="/addProject" class="btn btn-default" style="padding: 50%">
-                +
-            </a>
-        </div>
-        <div class="col-xs-6">
-            <a href="/tab" class="btn btn-default" style="padding: 50%">
-                +
-            </a>
-        </div>
-        <div class="col-xs-6">
-            <a href="/tab" class="btn btn-default" style="padding: 50%">
-                +
-            </a>
-        </div>
+
+    <div id="title2"><b>프로젝트 1</b></div>
+    <br>
+    <div id="date">2017.07.24 ~ 2017.07.28</div>
+    <br>
+
+    <!-- 프로그래스 바 -->
+    <div class="progress">
+        <div class="progress-bar" style="width: {{percentage}};">{{percentage}}</div>
     </div>
+    {{> table}}
+
+<!--    <a href="/proAdd" class="btn btn-default">추가</a>
+    <a href="/proDelete" class="btn btn-primary">삭제</a>-->
+
 </template>
