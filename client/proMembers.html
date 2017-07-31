@@ -1,19 +1,24 @@
 <template name="proMembers">
 
-    <div row>
-        <div class="col-xs-12">
-            <div class="col-xs-10">
-                <div id="title2">프로젝트 구성원</div>
-            </div>
-            <div class="col-xs-2">
-                <a href="/proMembersEdit" class="btn btn-primary">편집</a>
-            </div>
-        </div>
+    <br>
+    <div id="title2">프로젝트 1 의 팀원</div>
+    <div id="date">2017.07.24 ~ 2017.07.28</div>
+    <br>
+
+    <div class="col-xs-12">
+        <table class="table">
+            <tr>
+                <th>No</th>
+                <th>리스트 항목</th>
+            </tr>
+            {{#each array}}
+                <tr>
+                    <td>{{no}}</td>
+                    <td>{{content}}</td>
+                </tr>
+            {{/each}}
+        </table>
     </div>
-
-    <br><br>
-
-    <div class="col-xs-12"> {{> membersTable}} </div>
 
     <div>회원초대
         <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
