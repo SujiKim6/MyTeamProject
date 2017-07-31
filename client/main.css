@@ -115,5 +115,12 @@ input:checked + .slider:before {
 }
 
 #inputDropdown {
+    display: inline-block;
     width: 100%;
+}
+
+#addTodo {
+    border: 0;
+    outline: 0;
+    background-color: inherit;
 }
