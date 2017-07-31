@@ -7,6 +7,7 @@ Router.configure({
 Router.route('/', 'login');
 Router.route('/join', 'join');
 Router.route('/mypage', 'mypage');
+Router.route('/proMain', 'projectMain');
 Router.route('/addProject', 'addProject');
 Router.route('/calender', 'calender');
 Router.route('/tab', 'tab');
