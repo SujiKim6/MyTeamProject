@@ -1,18 +1,26 @@
 <template name="projectMain">
-    <table class="table">
-        {{#each array}}
-            <tr>
-                <td><button>{{projects}}</button></td>
-            </tr>
-        {{/each}}
 
-        <div class="row">
-            <div class="col-xs-6">
-                <a href="/addProject" class="btn btn-default" style="padding: 50%">
-                    +
-                </a>
-            </div>
+    <div row>
+        <div class="col-xs-12">
+            <div class="alert alert-success" role="alert">...</div>
         </div>
+    </div>
 
-    </table>
+    <div class="container">
+        <table class="table">
+            {{#each array}}
+                <tr>
+                    <td><button>{{projects}}</button></td>
+                </tr>
+            {{/each}}
+
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href="/addProject" class="btn btn-default" style="padding: 50%">
+                        +
+                    </a>
+                </div>
+            </div>
+        </table>
+    </div>
 </template>
