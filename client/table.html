@@ -1,12 +1,12 @@
 <template name="table">
     <table class="table">
         <tr>
-            <th><!-- 체크박스 (전체 누르기 기능) --></th>
+            <th><<input type="checkbox"><br></th>
             <th>리스트 항목</th>
         </tr>
         {{#each array}}
             <tr>
-                <td><!-- 체크박스 (개별 누르기 기능) --></td>
+                <td><input type="checkbox"><br></td>
                 <td>{{content}}</td>
             </tr>
         {{/each}}
