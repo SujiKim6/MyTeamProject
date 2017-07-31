@@ -5,12 +5,11 @@
                 <label class="control-label" for="focusedInput" style="margin-top: 10%">이름 </label>
             </div>
             <div class="col-xs-10 col-sm-9 col-md-10">
-                <input class="form-control" id="focusedInput"  type="text" placeholder="프로젝트 이름을 입력해주세요.">
+                <input class="form-control" id="projectName"  type="text" placeholder="프로젝트 이름을 입력해주세요.">
             </div>
         </div>
     </div> <br>
     <div class="row">
-        <!--수정해야 하는 부분 안해 십창 알아서 UI 구성해줘 말항 십창 아니 왜 화면 키우니까 말을 안듣니 이 자싁들아.-서진(무섭댱 우리 서진띠)-->
         <div class="project_date">
             <div>
                 <div class="col-xs-2 col-sm-3 col-md-2">
@@ -27,7 +26,7 @@
                     <label class="control-label" for="focusedInput" style="margin-top: 10%">종료</label>
                 </div>
                 <div class="col-xs-10 col-sm-4 col-md-4">
-                    <input id="inpStartDate" class="btn btn-default" style="width: 100%" type="date">
+                    <input id="inpEndDate" class="btn btn-default" style="width: 100%" type="date">
                 </div>
             </div>
         </div>
@@ -36,7 +35,7 @@
 
     <div class="form-group">
         <label class="control-label" for="inputLarge">프로젝트 목표 (50자이내)</label>
-        <input class="form-control input-lg" type="text" placeholder="내용을 입력해주세요" id="inputLarge">
+        <input class="form-control input-lg" type="text" placeholder="내용을 입력해주세요" id="projectGoal">
     </div>
 
     <label class="control-label" for="inputLarge">프로젝트 할일 추가</label>
@@ -54,7 +53,7 @@
         <label class="control-label" for="inputLarge">공개여부</label>
         <div>
             <form>
-                <input type="radio" name="gender" value="male" checked> 공개 &nbsp;&nbsp;
+                <input id="public" type="radio" name="gender" value="male" checked> 공개 &nbsp;&nbsp;
                 <input type="radio" name="gender" value="female"> 비공개
             </form>
         </div>
@@ -63,7 +62,7 @@
     <div class="row">
         <div class="col-xs-4 col-sm-4 col-md-4"></div>
         <div class="col-xs-4 col-sm-4 col-md-4">
-            <a href="#" class="btn btn-default" style="width: 100%">확인</a>
+            <a id="confirmBtn" href="/proMain" class="btn btn-default" style="width: 100%">확인</a>
         </div>
         <div class="col-xs-4 col-sm-4 col-md-4"></div>
     </div>

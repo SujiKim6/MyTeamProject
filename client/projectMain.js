@@ -1,3 +1,3 @@
-Template.projectMain.events({
+Template.projectMain.helpers({
 
 })
