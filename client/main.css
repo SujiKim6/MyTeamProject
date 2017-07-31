@@ -109,3 +109,11 @@ input:checked + .slider:before {
 .tab {
     width: 49.7%;
 }
+
+#dropdownMenu1 {
+    width: 100%;
+}
+
+#inputDropdown {
+    width: 100%;
+}

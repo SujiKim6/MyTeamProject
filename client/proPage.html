@@ -1,18 +1,52 @@
 <template name="proPage">
-    <div class="container">
-        <div row>
-            <div class="col-xs-12">
-                <div class="col-xs-10">
-                    <div id="title2">프로젝트 1</div>
-                </div>
-                <div class="col-xs-2">
-                    <a href="/proPageEdit" class="btn btn-primary">편집</a>
-                </div>
-            </div>
-        </div>
+    <br>
+    <div id="title2">프로젝트 1</div>
+    <div id="date">2017.07.24 ~ 2017.07.28</div>
+    <br>
 
-        <br><br>
-
-        {{> membersTable}}
+    <!-- 프로그래스 바 -->
+    <div class="progress">
+        <div class="progress-bar" style="width: {{percentage}};">{{percentage}}</div>
     </div>
+    <table class="table">
+        <tr>
+            <th><input type="checkbox" name="check_all" value="list"></th>
+            <th>리스트 항목</th>
+            <th>편집</th>
+        </tr>
+        {{#each array}}
+            <tr>
+                <td><input type="checkbox" name="check_one" value="list"></td>
+                <td>{{content}}</td>
+                <td>
+                    <div class="dropdown"> <!-- 각 할일 편집 버튼 -->
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                            편집
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">수정</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#" id="btnDelete">삭제</a></li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        {{/each}}
+    </table>
+
+    <div> <!-- 할일 추가 버튼 -->
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                할일 추가하기
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <li role="presentation" id="inputDropdown"><a role="menuitem" tabindex="-1" href="#" >dfs</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <br><br>
+
+    {{> membersTable}}
+
 </template>
