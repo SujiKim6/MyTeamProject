@@ -30,10 +30,29 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div> <br>
     <div class="form-group">
-        <label class="control-label" for="inputLarge">Large input</label>
+        <label class="control-label" for="inputLarge">프로젝트 목표 (50자이내)</label>
         <input class="form-control input-lg" type="text" id="inputLarge">
     </div>
 
+    <label class="control-label" for="inputLarge">프로젝트 할일 추가</label>
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="할일을 추가하세요." aria-describedby="basic-addon2">
+        <!-- +부분에 버튼 넣으면 될듯! -희림 -->
+        <span class="input-group-addon" id="basic-addon2">+</span>
+    </div> <br>
+    <div>
+        <label class="control-label" for="inputLarge">공개여부</label>
+        <div>
+            <form>
+                <input type="radio" name="gender" value="male" checked> 공개
+                <input type="radio" name="gender" value="female"> 비공개
+            </form>
+        </div>
+    </div> <br>
+
+    <div>
+        <a href="#" class="btn btn-default">확인</a>
+    </div>
 </template>
