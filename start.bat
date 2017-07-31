@@ -12,4 +12,8 @@ $위 경로에서 android sdk의 tools 부분을 다운로드 받아서 압축�
 $자세한 참조문서
 $https://stackoverflow.com/questions/42613882/error-could-not-find-gradle-wrapper-within-android-sdk-might-need-to-update-yo
 
+$안드로이드 에뮬레이터 실행
 meteor run android
+
+$안드로이드 실제 단말 실행
+$meteor run android-device
