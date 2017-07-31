@@ -6,3 +6,5 @@ App.info({
     email: 'contact@example.com',
     website: 'http://example.com'
 });
+
+App.setPreference('android-targetSdkVersion', '24');
