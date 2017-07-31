@@ -1,16 +1,16 @@
-Template.proTable.onCreated(function() {
+Template.proPage.onCreated(function() {
 });
 
-Template.proTable.onRendered(function() {
+Template.proPage.onRendered(function() {
 });
 
-Template.proTable.helpers({
+Template.proPage.helpers({
     array: function() {
         return todolistDB.find({}).fetch();
     }
 });
 
-Template.proTable.events({
+Template.proPage.events({
     'click #btnDelete': function(evt, tmpl) {
         if(confirm('정말 삭제하시겠습니까?')) {
             todolistDB.remove({no: $('#inpDelete').val()});
