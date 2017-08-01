@@ -130,8 +130,8 @@ input:checked + .slider:before {
 }
 
 .todotb {
-     text-align: center;
- }
+    text-align: center;
+}
 
 #manager{
     height: 36px;
