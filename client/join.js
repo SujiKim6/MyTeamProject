@@ -16,7 +16,7 @@ Template.join.events({
 
 
         // 빈칸을 모두 채우지 않을 경우 에러메세지 띄우고 돌아가기
-        if((email === null )&&(password ===null)&&(passwordConfirm===null) &&(username===null) )
+        if((email === null ) || (password ===null) || (passwordConfirm===null) || (username===null) )
         {
             //error 메세지 띄우기
             return alert("모든 정보를 입력하세요.");
