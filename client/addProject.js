@@ -25,10 +25,11 @@ Template.addProject.events({
         }
 
         // 빈칸을 모두 채우지 않을 경우 에러메세지 띄우고 돌아가기
-        if((project_name === null )||(project_goal ===null)||(startDate===null) ||(endDate===null) )
+        if((project_name === "" )||(project_goal ==="")||(startDate==="") ||(endDate==="") )
         {
             //error 메세지 띄우기
-            return alert("모든 정보를 입력하세요.");
+            alert("모든 정보를 입력하세요.");
+            return;
         }
 
         // 빈칸을 모두 채웠을 경우 DB에 추가하기

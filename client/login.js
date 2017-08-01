@@ -11,17 +11,20 @@ Template.login.helpers({
 Template.login.events({
     'click #loginBtn': function (evt, tmpl) {
 
-        if(userDB.findOne({username:document.getElementById('emailInput').value})==undefined )
+        if(userDB.findOne({username:$('#emailInput').val()})==undefined )
         {
             alert("이메일을 잘못 입력했습니다.");
+            return;
         }
-        else if(document.getElementById('passwordInput').value === userDB.findOne({username:document.getElementById('emailInput').value}).password)
+        else if($('#passwordInput').val() === userDB.findOne({username:$('#emailInput').val()}).password)
         {
             location.href="/proMain";
+            return;
         }
         else
         {
             alert("비밀번호가 틀렸습니다.");
+            return;
         }
 
         SessionStore.set('myEmail', document.getElementById('emailInput').value);
