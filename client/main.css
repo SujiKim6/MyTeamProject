@@ -119,8 +119,12 @@ input:checked + .slider:before {
     width: 100%;
 }
 
-#addTodo {
+#btnAdd {
     border: 0;
     outline: 0;
     background-color: inherit;
+}
+
+.usertb {
+    text-align: center;
 }
