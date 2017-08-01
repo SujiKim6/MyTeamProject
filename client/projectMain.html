@@ -1,18 +1,32 @@
 <template name="projectMain">
-    <table class="table">
-        <div class="row">
+
+    <div row>
+        <div class="col-xs-12">
+            <div class="alert alert-info" role="alert">
+                새로운 프로젝트 멤버 요청이 있습니다.
+                <button id="accept" type="button" style="float: inherit;">수락</button>
+                <button id="refuse" type="button" style="float: right;">거절</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <table class="table">
             <div class="col-xs-6">
                 {{#each array}}
                     <tr>
-                        <td><a href="/tab" id="btnProject" style="padding: 50%">{{project_name}}</a></td>
+                        <td><button>{{projects}}</button></td>
                     </tr>
                 {{/each}}
             </div>
-            <div class="col-xs-6">
-                <a href="/addProject" class="btn btn-default" style="padding: 50%">
-                    +
-                </a>
+
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href="/addProject" class="btn btn-default" style="padding: 50%">
+                        +
+                    </a>
+                </div>
             </div>
-        </div>
-    </table>
+        </table>
+    </div>
 </template>

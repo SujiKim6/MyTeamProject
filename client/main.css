@@ -109,3 +109,22 @@ input:checked + .slider:before {
 .tab {
     width: 49.7%;
 }
+
+#dropdownMenu1 {
+    width: 100%;
+}
+
+#inputDropdown {
+    display: inline-block;
+    width: 100%;
+}
+
+#btnAdd {
+    border: 0;
+    outline: 0;
+    background-color: inherit;
+}
+
+.usertb {
+    text-align: center;
+}
