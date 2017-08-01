@@ -124,3 +124,7 @@ input:checked + .slider:before {
     outline: 0;
     background-color: inherit;
 }
+
+.usertb {
+    text-align: center;
+}
