@@ -20,6 +20,26 @@ Template.proPage.helpers({
 
 Template.proPage.events({
 
+    // 할 일 체크
+    'click #chBox': function(evt, tmpl) {
+        if (document.getElementById('chBox').checked) {
+            todoDB.update({_id: this._id},
+                {
+                    $set: {
+                        isComplete: true
+                    }
+                });
+        } else {
+            todoDB.update({_id: this._id},
+                {
+                    $set: {
+                        isComplete: false
+                    }
+                });
+        }
+    },
+
+    // 할 일 수정
     'click #btnEdit': function(evt, tmpl) {
         todoDB.update({_id: Session.get('editingId')}, {
             $set: {
@@ -39,29 +59,15 @@ Template.proPage.events({
         //     }
         // });
     },
-    //할 일 체크
-    'click #chBox': function(evt, tmpl) {
-        if (document.getElementById('chBox').checked) {
-            todoDB.update({_id: this._id},
-                {
-                    $set: {
-                        isComplete: true
-                    }
-                });
-        } else {
-            todoDB.update({_id: this._id},
-                {
-                    $set: {
-                        isComplete: false
-                    }
-                });
-        }
-    },
+
+    // 할 일 삭제
     'click #iconDelete': function(evt, tmpl) {
         if(confirm('정말 삭제하시겠습니까?')) {
             todoDB.remove({_id: this._id});
         };
     },
+
+    // 할 일 추가
     'click #btnAdd': function(evt, tmpl) {
         var strAdd = $('#inpAdd').val();
 
@@ -71,10 +77,7 @@ Template.proPage.events({
             project_id:'project DBs ID',
             isComplete: false
         });
-
         $("#inpAdd").val('');
-
     }
-    
-    //수정 버튼 기능 추가해야함
+
 });
