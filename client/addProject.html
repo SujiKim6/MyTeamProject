@@ -51,7 +51,11 @@
             </div>
         </div> <br>
         <div>
+            {{#if isPublic}}
+                <input class="form-control" type="text" placeholder="프로젝트 비밀번호를 입력하세요." style="visibility: hidden">
+            {{else}}
                 <input class="form-control" type="text" placeholder="프로젝트 비밀번호를 입력하세요.">
+            {{/if}}
 
         </div> <br>
 

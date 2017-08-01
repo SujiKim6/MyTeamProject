@@ -1,26 +1,29 @@
 Template.addProject.helpers({
+
     isPublic: function() {
         return Session.get('isPublic')
     }
 });
 
+Session.set('isPublic',true);
+
 Template.addProject.events({
     'click #public': function (evt, tmpl) {
-        todoDB.update({_id: this._id},{
-            $set: {
-                isPublic: false
-            }
-        });
-        Session.set('isPublic',false)
-    },
-
-    'click #private': function (evt, tmpl) {
         todoDB.update({_id: this._id},{
             $set: {
                 isPublic: true
             }
         });
         Session.set('isPublic',true)
+    },
+
+    'click #private': function (evt, tmpl) {
+        todoDB.update({_id: this._id},{
+            $set: {
+                isPublic: false
+            }
+        });
+        Session.set('isPublic',false)
     },
 
     'click #addProjectPlusBtn': function (evt, tmpl) {
@@ -57,7 +60,7 @@ Template.addProject.events({
             startAt: startDate,
             endAt: endDate,
             manager_username: SessionStore.get('myEmail'),
-            isPublic: publicSelected
+            isPublic: true
         });
     }
 })
