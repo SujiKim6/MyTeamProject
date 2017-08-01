@@ -3,27 +3,13 @@ Template.addProject.helpers({
 });
 
 Handlebars.registerHelper('if', function (options) {
-    if(isPublic === true) { //공개면
-        return options.fn(this);
-    } else { //비공개면
-        return options.inverse(this);
-    }
+
 });
 
 
 
 
 Template.addProject.events({
-
-    //비공개 라디오 버튼 클릭시 입력상자에 readonly 속성추가
-    'click #private': function (evt, tmpl) {
-        //
-    },
-
-    //공개 라디오 버튼 클릭시
-    'click #public' :function (evt, tmpl) {
-        //
-    },
 
     //addProject의 프로젝트 할일 추가 + 버튼
     'click #addProjectPlusBtn': function (evt, tmpl) {
