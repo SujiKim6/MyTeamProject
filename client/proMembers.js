@@ -17,6 +17,8 @@ Template.proMembers.events({
         };
     },
 
+    //회원초대 하는 부분에서 초대 하면 project_memberDB에 추가하는 거 처리하기
+    //초대가 되면 isAccepted는 False로 초기화 시키고 다른 데에서 고치기
 
     //회원 초대
 /*    'click #inviteBtn': function (evt, tmpl) {

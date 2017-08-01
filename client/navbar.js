@@ -5,6 +5,8 @@ $(function() {
 });
 
 Template.navbar.events({
+    // 페이지 옮기는 거 처리하기
+
     //teamhub 눌렀을 때 처리
     'click #brandName':function () {
         if(SessionStore.get('myEmail')===' ')
