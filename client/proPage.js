@@ -44,6 +44,6 @@ Template.proPage.events({
             isComplete: ''
         });
     }
-    
+
     //수정 버튼 기능 추가해야함
 });

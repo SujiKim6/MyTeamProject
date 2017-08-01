@@ -26,7 +26,19 @@
     </div>
 
     <div class="col-xs-12">
-        <a href="/inviteSend" id="invite">회원초대<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span></a>
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                팀원 초대하기 <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <div>
+                    <div class="input-group">
+                        <input id="inviteInput" type="text" class="form-control" placeholder="초대할 팀원의 이메일을 입력하세요." aria-describedby="basic-addon2">
+                        <span class="input-group-addon" id="basic-addon2"><button id="inviteBtn" type="button">초대</button></span>
+                    </div>
+                </div>
+            </ul>
+        </div>
     </div>
 
     <br>

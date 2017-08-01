@@ -10,7 +10,23 @@ Template.login.helpers({
 
 Template.login.events({
     'click #loginBtn': function (evt, tmpl) {
-        var loginedEmail = $('#emailInput').val();
-        SessionStore.set('myEmail', loginedEmail);
+
+        if(userDB.findOne({username:$('#emailInput').val()})==undefined )
+        {
+            alert("이메일을 잘못 입력했습니다.");
+            return;
+        }
+        else if($('#passwordInput').val() === userDB.findOne({username:$('#emailInput').val()}).password)
+        {
+            location.href="/proMain";
+            return;
+        }
+        else
+        {
+            alert("비밀번호가 틀렸습니다.");
+            return;
+        }
+
+        SessionStore.set('myEmail', document.getElementById('emailInput').value);
     }
 });
