@@ -1,5 +1,8 @@
 Template.proMembers.helpers({
     //기존 존재하는 멤버 목록들을 보여준다.
+    array: function() {
+        return userDB.find({}).fetch();
+    }
 });
 
 //버튼 기능들 구현
