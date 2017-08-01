@@ -19,6 +19,8 @@ projectMemberDB = new Mongo.Collection('projectMemberDB');
 //     startAt: new Date(),
 //     endAt: new Date(),
 //     manager_username:'email'
+//     is_public:true,
+//     password: 'password'
 // }
 //
 // var project_member ={
