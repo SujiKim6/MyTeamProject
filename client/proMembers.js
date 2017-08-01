@@ -3,7 +3,7 @@ var tmp;
 Template.proMembers.helpers({
     //기존 존재하는 멤버 목록들을 보여준다.
     array: function() {
-        return userDB.find({}).fetch();
+        return projectMemberDB.find({}).fetch();
     }
 });
 
@@ -12,8 +12,8 @@ Template.proMembers.events({
 
     //회원 삭제
     'click #iconDelete': function(evt, tmpl) {
-        if(confirm('정말 삭제하시겠습니까?')) {
-            userDB.remove({_id: this._id});
+        if(confirm('정말 추방 하시겠습니까?')) {
+            projectMemberDB.remove({_id: this._id});
         };
     }
 
