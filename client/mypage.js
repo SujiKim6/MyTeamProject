@@ -16,6 +16,9 @@ Template.mypage.helpers({
     }
 });
 
+Template.mypage.helpers({
+});
+
 Template.mypage.events({
 
 });

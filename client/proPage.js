@@ -16,7 +16,17 @@ Template.proPage.helpers({
 
     array: function() {
         return todoDB.find({}).fetch();
+    },
+
+    percentage: function () {
+        var curProjectTodosCount = todoDB.find({project_id:'project DBs ID'}).count();
+        var curProjectTodosCompletedCount = todoDB.find({project_id:'project DBs ID', isComplete: true}).count();
+        if (curProjectTodosCount === 0) {
+            return 0;
+        }
+        return (curProjectTodosCompletedCount / curProjectTodosCount) * 100;
     }
+
 });
 
 Template.proPage.events({
