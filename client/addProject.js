@@ -2,10 +2,6 @@ Template.addProject.helpers({
 
 });
 
-Handlebars.registerHelper('if', function (options) {
-
-});
-
 
 
 
