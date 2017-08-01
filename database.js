@@ -1,7 +1,7 @@
 //DB 생성
 todoDB = new Mongo.Collection('todoDB'); //할일 DB
 projectDB = new Mongo.Collection('projectDB'); //프로젝트 DB
-userDB = new Mongo.Collection('userDB');
+userDB = new Mongo.Collection('userDB'); //사용자 DB
 projectMemberDB = new Mongo.Collection('projectMemberDB');
 
 

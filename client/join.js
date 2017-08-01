@@ -15,7 +15,7 @@ Template.join.events({
         var username = $('#nameInput').val();
 
         //이미 존재하는 계정이 있는 경우
-        if (undefined !== userDB.findOne({email: email})) {
+        if (undefined !== userDB.findOne({username: email})) {
             confirm('이미 회원이 존재합니다.')
 
             return;
@@ -28,9 +28,11 @@ Template.join.events({
         }
 
         userDB.insert({
-            email: email,
+            username: email,
             password: password,
             name: username
         })
+
+        location.href="/emailSend";
     }
 });
