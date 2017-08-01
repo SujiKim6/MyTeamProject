@@ -11,6 +11,8 @@ projectMemberDB = new Mongo.Collection('projectMemberDB');
 //     username: 'email',
 //     nickname: 'nickname'
 //     password: 'password'
+//     phone: '변경창에서 선택적으로 입력할 내용'
+//     school: '소속(학교, 학과)'
 // }
 //
 // var project = {
