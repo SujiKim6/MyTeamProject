@@ -128,3 +128,7 @@ input:checked + .slider:before {
 .usertb {
     text-align: center;
 }
+
+.todotb {
+     text-align: center;
+ }

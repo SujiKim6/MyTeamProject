@@ -5,6 +5,14 @@ Template.proPage.onRendered(function() {
 });
 
 Template.proPage.helpers({
+    isEditing: function() {
+        if(Session.get('editingId') === this._id) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    },
     array: function() {
         return todoDB.find({}).fetch();
     }
@@ -12,22 +20,42 @@ Template.proPage.helpers({
 
 Template.proPage.events({
 
-    // 'click #iconEdit': function(evt, tmpl) {
-    //     todoDB.update({_id: tmp_id},
-    //         {
-    //             $set: {
-    //                 title: $('#inpTitle').val(),
-    //                 body: $('#inpBody').val()
-    //             }
-    //         });
-    // },
+    'click #btnEdit': function(evt, tmpl) {
+        todoDB.update({_id: Session.get('editingId')}, {
+            $set: {
+                todo: $("#inpEdit").val()
+            }
+        });
+        Session.set('editingId','')
+    },
+    'click #iconEdit': function(evt, tmpl) {
+        Session.set('editingId',this._id)
+        // Meteor.call('editTodo', function(err, rslt) {
+        //     alert(rslt.status)
+        //     if(rslt.status === 'success') {
+        //     }
+        //     else {
+        //         alert('프로젝트 생성에 문제가 있습니다.');
+        //     }
+        // });
+    },
+    //할 일 체크
     'click #chBox': function(evt, tmpl) {
-        todoDB.update({_id: this.id},
-            {
-                $set: {
-                    isComplete: 'checked'
-                }
-            });
+        if (document.getElementById('chBox').checked) {
+            todoDB.update({_id: this._id},
+                {
+                    $set: {
+                        isComplete: true
+                    }
+                });
+        } else {
+            todoDB.update({_id: this._id},
+                {
+                    $set: {
+                        isComplete: false
+                    }
+                });
+        }
     },
     'click #iconDelete': function(evt, tmpl) {
         if(confirm('정말 삭제하시겠습니까?')) {
@@ -41,9 +69,11 @@ Template.proPage.events({
             createdAt: new Date(),
             todo: strAdd,
             project_id:'project DBs ID',
-            isComplete: ''
+            isComplete: false
         });
+
+        $("#inpAdd").val('');
+
     }
-    
-    //수정 버튼 기능 추가해야함
+
 });
