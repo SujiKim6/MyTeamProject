@@ -1,0 +1,1 @@
+// SessionStore.set('myEmail', 'myEmail@gmail.com');
