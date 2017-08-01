@@ -9,6 +9,7 @@ projectMemberDB = new Mongo.Collection('projectMemberDB');
 // var user = {
 //     createdAt: new Date(),
 //     username: 'email',
+//     nickname: 'nickname'
 //     password: 'password'
 // }
 //
