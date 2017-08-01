@@ -12,7 +12,7 @@ Template.join.events({
         var email = $('#emailInput').val();
         var password = $('#passwordInput').val();
         var passwordConfirm = $('#passwordConfirmInput').val();
-        var name = $('#nameInput').val();
+        var username = $('#nameInput').val();
 
         //이미 존재하는 계정이 있는 경우
         if (undefined !== userDB.findOne({email: email})) {
@@ -30,7 +30,7 @@ Template.join.events({
         userDB.insert({
             email: email,
             password: password,
-            name: name
+            name: username
         })
     }
 });
