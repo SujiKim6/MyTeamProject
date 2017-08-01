@@ -132,3 +132,30 @@ input:checked + .slider:before {
 .todotb {
      text-align: center;
  }
+
+#manager{
+    height: 36px;
+    font-size: 13px;
+    padding-bottom: 10px;
+    vertical-align:middle;
+}
+#out{
+    height: 36px;
+    font-size: 13px;
+
+    vertical-align:middle;
+
+}
+
+#dropdownMenu2 {
+    width: 73%;
+}
+
+#dropdownMenu3 {
+    width: 100%;
+
+}
+
+#dropdownMenu4 {
+    width: 83%;
+}
