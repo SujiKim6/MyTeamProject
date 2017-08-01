@@ -11,7 +11,6 @@ Router.route('/proMain', 'projectMain');
 Router.route('/addProject', 'addProject');
 Router.route('/calender', 'calender');
 Router.route('/tab', 'tab');
-Router.route('/proMain', 'proMain');
 Router.route('/proTable','proTable');
 Router.route('/proMembers', 'proMembers');
 Router.route('/membersTable','membersTable');

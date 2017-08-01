@@ -6,7 +6,7 @@ Template.proMembersEdit.onRendered(function() {
 
 Template.proMembersEdit.helpers({
     array: function() {
-        return todolistDB.find({}).fetch();
+        return todoDB.find({}).fetch();
     }
 });
 
