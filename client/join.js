@@ -14,6 +14,14 @@ Template.join.events({
         var passwordConfirm = $('#passwordConfirmInput').val();
         var username = $('#nameInput').val();
 
+
+        // 빈칸을 모두 채우지 않을 경우 에러메세지 띄우고 돌아가기
+        if((email === undefined )&&(password ===undefined)&&(passwordConfirm===undefined) &&(username===undefined) )
+        {
+            //error 메세지 띄우기
+            return alert("모든 정보를 입력하세요.");
+        }
+
         //이미 존재하는 계정이 있는 경우
         if (undefined !== userDB.findOne({username: email})) {
             confirm('이미 회원이 존재합니다.')
