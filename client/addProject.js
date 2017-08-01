@@ -39,7 +39,7 @@ Template.addProject.events({
             goal: project_goal,
             startAt: startDate,
             endAt: endDate,
-            manager_username:SessionStore.get('myEmail'),
+            manager_username: SessionStore.get('myEmail'),
             isPublic: publicSelected
         });
     }
