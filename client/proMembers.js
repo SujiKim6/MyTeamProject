@@ -15,7 +15,22 @@ Template.proMembers.events({
         if(confirm('정말 삭제하시겠습니까?')) {
             userDB.remove({_id: this._id});
         };
-    },
+    }
+
+
+    //회원 초대
+/*    'click #inviteBtn': function (evt, tmpl) {
+        var email = $('#inviteInput').val(); //추가할 회원의 이메일
+
+        //projectMemberDB에 멤버 추가
+        projectMemberDB.insert({
+            createdAt: new Date(),
+            project_id: 'project DBs ID',
+            member_username: email,
+            isAccepted: false
+        })
+
+    }*/
 
     //tab의 회원초대 버튼
     /*'click #invite': function (evt, tmpl) {

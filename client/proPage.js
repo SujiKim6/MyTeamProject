@@ -75,5 +75,6 @@ Template.proPage.events({
         $("#inpAdd").val('');
 
     }
-
+    
+    //수정 버튼 기능 추가해야함
 });

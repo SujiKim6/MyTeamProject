@@ -3,18 +3,19 @@
         <div>
             <div class="form-group">
                 <label class="control-label" for="focusedInput">Email</label><br>
-                <input class="form-control" id="focusedInput" placeholder="이메일을 입력하세요.">
+                <input class="form-control" id="emailInput" placeholder="이메일을 입력하세요.">
             </div>
 
             <p></p>
             <div class="form-group">
                 <label class="control-label" for="focusedInput">Password</label><br>
-                <input class="form-control" id="focusedInput" placeholder="비밀번호를 입력하세요.">
+                <input class="form-control" id="passwordInput" placeholder="비밀번호를 입력하세요.">
             </div>
         </div>
         <div>
-            <a href="/join" class="btn btn-default">가입하기</a>
-            <a href="/proMain" class="btn btn-primary">로그인</a>
+            <a href="/join" id="joinBtn" class="btn btn-default">가입하기</a>
+            <!--<a href="/proMain" id="loginBtn" class="btn btn-primary">로그인</a>-->
+            <a id="loginBtn" class="btn btn-primary">로그인</a>
         </div>
     </div>
 </template>

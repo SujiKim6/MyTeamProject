@@ -6,7 +6,7 @@ Template.membersTable.onRendered(function() {
 
 Template.membersTable.helpers({
     array: function() {
-        return todolistDB.find({}).fetch();
+        return todoDB.find({}).fetch();
     }
 });
 
