@@ -6,22 +6,42 @@ Template.proPage.onRendered(function() {
 
 Template.proPage.helpers({
     array: function() {
-        return todolistDB.find({}).fetch();
+        return todoDB.find({}).fetch();
     }
 });
 
 Template.proPage.events({
-    'click #btnDelete': function(evt, tmpl) {
+
+    // 'click #iconEdit': function(evt, tmpl) {
+    //     todoDB.update({_id: tmp_id},
+    //         {
+    //             $set: {
+    //                 title: $('#inpTitle').val(),
+    //                 body: $('#inpBody').val()
+    //             }
+    //         });
+    // },
+    'click #chBox': function(evt, tmpl) {
+        todoDB.update({_id: this.id},
+            {
+                $set: {
+                    isComplete: 'checked'
+                }
+            });
+    },
+    'click #iconDelete': function(evt, tmpl) {
         if(confirm('정말 삭제하시겠습니까?')) {
-            todolistDB.remove({no: $('#inpDelete').val()});
+            todoDB.remove({_id: this._id});
         };
     },
     'click #btnAdd': function(evt, tmpl) {
         var strAdd = $('#inpAdd').val();
 
-        todolistDB.insert({
-            no: require("mongodb-autoincrement"),
-            content: strAdd
+        todoDB.insert({
+            createdAt: new Date(),
+            todo: strAdd,
+            project_id:'project DBs ID',
+            isComplete: ''
         });
     }
     

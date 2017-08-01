@@ -8,27 +8,19 @@
     <div class="progress">
         <div class="progress-bar" style="width: {{percentage}};">{{percentage}}</div>
     </div>
-    <table class="table">
+    <table align="center" class="table">
         <tr>
-            <th><input type="checkbox" name="check_all" value="list"></th>
-            <th>리스트 항목</th>
-            <th>편집</th>
+            <th width="20%">수행완료</th>
+            <th width="60%">할 일</th>
+            <th width="20%">편집</th>
         </tr>
         {{#each array}}
             <tr>
-                <td><input type="checkbox" name="check_one" value="list"></td>
-                <td>{{content}}</td>
+                <td><input id="chBox" type="checkbox" name="check" value="list"></td>
+                <td>{{todo}}</td>
                 <td>
-                    <div class="dropdown"> <!-- 각 할일 편집 버튼 -->
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                            편집
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">수정</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#" id="btnDelete">삭제</a></li>
-                        </ul>
-                    </div>
+                    <span id="iconEdit" class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                    <span id="iconDelete" class="glyphicon glyphicon-trash" aria-hidden="true"></span>
                 </td>
             </tr>
         {{/each}}
@@ -42,8 +34,8 @@
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                 <div>
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="추가하려는 할 일을 입력하세요." aria-describedby="basic-addon2">
-                        <span class="input-group-addon" id="basic-addon2"><button type="button" id="addTodo">추가</button></span>
+                        <input id="inpAdd" type="text" class="form-control" placeholder="추가하려는 할 일을 입력하세요." aria-describedby="basic-addon2">
+                        <span class="input-group-addon" id="basic-addon2"><button id="btnAdd" type="button">추가</button></span>
                     </div>
                 </div>
             </ul>
