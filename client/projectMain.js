@@ -1,4 +1,5 @@
 Template.projectMain.onCreated(function() {
+
 });
 
 Template.projectMain.onRendered(function() {

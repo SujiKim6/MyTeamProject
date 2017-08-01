@@ -13,6 +13,7 @@ Template.proPage.helpers({
             return false;
         }
     },
+
     array: function() {
         return todoDB.find({}).fetch();
     }
@@ -22,18 +23,18 @@ Template.proPage.events({
 
     // 할 일 체크
     'click #chBox': function(evt, tmpl) {
-        if (document.getElementById('chBox').checked) {
+        if ($("chBox").checked) {
             todoDB.update({_id: this._id},
                 {
                     $set: {
-                        isComplete: true
+                        isComplete: false
                     }
                 });
         } else {
             todoDB.update({_id: this._id},
                 {
                     $set: {
-                        isComplete: false
+                        isComplete: true
                     }
                 });
         }
@@ -48,6 +49,7 @@ Template.proPage.events({
         });
         Session.set('editingId','')
     },
+
     'click #iconEdit': function(evt, tmpl) {
         Session.set('editingId',this._id)
         // Meteor.call('editTodo', function(err, rslt) {

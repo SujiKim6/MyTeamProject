@@ -49,7 +49,8 @@
             </button>
         </span>
 
-        </div> <br>
+        </div>
+        <br>
         <div>
             <label class="control-label" for="inputLarge">공개여부</label>
             <div>
@@ -58,11 +59,17 @@
                     <input id="private" type="radio" name="gender" value="female"> 비공개
                 </form>
             </div>
-        </div> <br>
+        </div>
+        <br>
         <div>
-                <input class="form-control" type="text" placeholder="프로젝트 비밀번호를 입력하세요.">
+            {{#if isPublic}}
+                <input id="checkIsPublic" class="form-control" type="text" placeholder="프로젝트 비밀번호를 입력하세요." >
+            {{else}}
+                <input id="checkIsPublic" class="form-control" type="text" placeholder="프로젝트 비밀번호를 입력하세요." style="visibility: hidden">
+            {{/if}}
+        </div>
 
-        </div> <br>
+        <br>
 
         <div class="row">
             <div class="col-xs-4 col-sm-4 col-md-4"></div>

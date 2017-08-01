@@ -1,13 +1,28 @@
 Template.addProject.helpers({
-
+    isPublic: function() {
+        return Session.get('isPublic')
+    }
 });
 
-
-
-
 Template.addProject.events({
+    'click #public': function (evt, tmpl) {
+        todoDB.update({_id: this._id},{
+            $set: {
+                isPublic: false
+            }
+        });
+        Session.set('isPublic',false)
+    },
 
-    //addProject의 프로젝트 할일 추가 + 버튼
+    'click #private': function (evt, tmpl) {
+        todoDB.update({_id: this._id},{
+            $set: {
+                isPublic: true
+            }
+        });
+        Session.set('isPublic',true)
+    },
+
     'click #addProjectPlusBtn': function (evt, tmpl) {
         var todo_list = $('#todoInput').val();
 
@@ -25,11 +40,6 @@ Template.addProject.events({
         var project_goal =  $('#projectGoal').val();
         var startDate =  $('#inpStartDate').val();
         var endDate =  $('#inpEndDate').val();
-        var publicSelected = false;
-
-        if(document.getElementById('public').checked) {
-            publicSelected = true;
-        }
 
         // 빈칸을 모두 채우지 않을 경우 에러메세지 띄우고 돌아가기
         if((project_name === "" )||(project_goal ==="")||(startDate==="") ||(endDate==="") )
