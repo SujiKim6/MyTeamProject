@@ -4,11 +4,13 @@ Template.proMembers.helpers({
         var currentProject = SessionStore.get('curProject');
         return projectMemberDB.find({$and: [{project_id: currentProject}, {isAccepted: true}]}).fetch();
     },
-
+    
+    //project의 이름을 빼오기 위함
     project: function () {
         return projectDB.find({_id: SessionStore.get('curProject')}).fetch();
     },
 
+    //project의 구성원 총 인원을 알아내기 위함
     count:function () {
         return projectMemberDB.find({$and: [{project_id: SessionStore.get('curProject')}, {isAccepted: true}]}).count();
     }
