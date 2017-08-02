@@ -173,6 +173,7 @@ input:checked + .slider:before {
 
 }
 
-.glyphicon.glyphicon-user {
+#myPageGlyphicon {
     font-size: 350%;
+    color: #2196F3;
 }
