@@ -93,7 +93,6 @@ Template.proPage.events({
     // 할 일 추가
     'click #btnAdd': function(evt, tmpl) {
         var strAdd = $('#inpAdd').val();
-        var currentProject = SessionStore.get('curProject');
 
         todoDB.insert({
             createdAt: new Date(),
