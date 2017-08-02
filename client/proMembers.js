@@ -1,12 +1,15 @@
 Template.proMembers.helpers({
     //기존 존재하는 멤버 목록들을 보여준다.
     members: function() {
-        return projectMemberDB.find({isAccepted: true}).fetch();
+        var currentProject = SessionStore.get('curProject');
+        return projectMemberDB.find({$and: [{project_id: currentProject}, {isAccepted: true}]}).fetch();
 
         //하고싶은 일: 조건(해당 프로젝트 && isAccepted가 true)에 맞는 이메일과 이름을 띄우고 싶다
         //어려운점: projectMemberDB (프로젝트 팀원DB)에서는 이메일은 있으나, 이름은 다른DB(userDB)에 있음,
         // email이라는 유니크키가 있으므로 userDB에서 해당 이메일의 이름을 찾아올수는 있음
         // 근데 두개를 join하여 화면에 형식에 맞게 출력해주고싶은데 잘 안된다.
+
+        //차선 방안 : 그냥 projectMemberDB에 이름도 넣는다..
 
     }
 });
@@ -16,32 +19,29 @@ Template.proMembers.events({
 
     //회원 초대
     'click #inviteBtn': function (evt, tmpl) {
-
-        var invitedUserEmail = $('#inviteInput').val(); //인풋박스(inviteInput)에 입력된 회원의 아이디를 가져옴
+        var invitedUserEmail = $('#inviteInput').val(); //인풋박스(inviteInput)에 입력된 회원의 아이디(이메일)를 가져옴
         var invitedUser = userDB.findOne({username: invitedUserEmail}); //초대할 사람의 email을 userDB에서 검색
-        var currentProject = Session.get('curProject');
+        var currentProject = SessionStore.get('curProject'); //프로젝트 _id값
 
         //해당 회원이 userDB에 존재(팀허브에 가입된 회원)하면 바로 앱 내에서 초대,
-        if (invitedUser !== undefined) { //회원 존재하면 일단 넣음 (isAccepted는 초대받은 회원이 수락을 누르면 true로 바뀌고 정식 등록됨)
+        if (invitedUser !== undefined) { //회원 존재하면 일단 넣음
             //회원등록, 그러나 Accepted 안된 상태
             projectMemberDB.insert({
                 createdAt: new Date(),
                 project_id: currentProject,
                 member_username: invitedUserEmail,
-                isAccepted: false
-            })
+                isAccepted: true, //일단 임시로 되는걸로 함, 원래는 false가 기본값이고 수락 버튼 눌러야 true되는거임
+                name: invitedUser.name
+            });
         }
         //해당 회원이 userDB에 존재하지않으면 초대 이메일을 보냄 - 추후 구현
     },
 
     //회원 추방 버튼 (탈퇴아님, 프로젝트에서 추방하는것임)
     'click #iconDelete': function(evt, tmpl) {
-        alert(SessionStore.get('myEmail'))
-        alert(SessionStore.get('curProject'))
         //매니저만 삭제기능을 사용 할 수 있음 그러므로 매니저 검증 ㄱㄱ
         var loginedId = SessionStore.get('myEmail'); //지금 로그인한 애 아이디
         var currentProject = SessionStore.get('curProject');
-
 
         var manager = projectDB.findOne({$and: [{_id: currentProject}, {manager_username: loginedId}]}); //지금 로그인한 놈이 현재 프로젝트의 매니저인가?
         if (manager !== undefined) { //응 매니저 맞음
@@ -54,7 +54,7 @@ Template.proMembers.events({
 
     //매니저 위임 버튼 구현
     'click #giveManager': function (evt, tmpl) {
-        var loginedId = Session.get('myEmail'); //현재 로그인 된 회원의 아이디
+        var loginedId = SessionStore.get('myEmail'); //현재 로그인 된 회원의 아이디
         var user = projectMemberDB.findOne({member_username: loginedId}); //현재 로그인된 회원
         var manager = projectDB.findOne({manager_username: loginedId}); //로그인 된 사람이 매니저이면 나오고, 아니면 undefined
         var project = true;
