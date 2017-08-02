@@ -5,6 +5,10 @@ Template.proPage.onRendered(function() {
 });
 
 Template.proPage.helpers({
+    isComplete: function() {
+        return Session.get('isChecked')
+    },
+
     isEditing: function() {
         if(Session.get('editingId') === this._id) {
             return true;
@@ -31,6 +35,8 @@ Template.proPage.helpers({
 
 Template.proPage.events({
 
+
+
     // 할 일 체크
     'click #chBox': function(evt, tmpl) {
         if ($("chBox").checked) {
@@ -40,6 +46,7 @@ Template.proPage.events({
                         isComplete: false
                     }
                 });
+            Session.set('isChecked', false)
         } else {
             todoDB.update({_id: this._id},
                 {
@@ -47,6 +54,7 @@ Template.proPage.events({
                         isComplete: true
                     }
                 });
+            Session.set('isChecked', true)
         }
     },
 
