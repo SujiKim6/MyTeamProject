@@ -4,9 +4,12 @@ Template.proPage.onCreated(function() {
 Template.proPage.onRendered(function() {
 });
 
+Session.set('isChecked', false)
+
 Template.proPage.helpers({
-    isComplete: function() {
-        return Session.get('isChecked')
+
+    isChecked: function() {
+        return todoDB.isComplete
     },
 
     isEditing: function() {
@@ -88,12 +91,11 @@ Template.proPage.events({
     // 할 일 추가
     'click #btnAdd': function(evt, tmpl) {
         var strAdd = $('#inpAdd').val();
-
         todoDB.insert({
             createdAt: new Date(),
             todo: strAdd,
             project_id:'project DBs ID',
-            isComplete: true
+            isComplete: false
         });
         $("#inpAdd").val('');
     }

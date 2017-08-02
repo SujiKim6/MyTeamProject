@@ -17,10 +17,10 @@
         </tr>
         {{#each array}}
             <tr>
-                {{#if isComplete}}
-                    <td><input checked id="chBox" type="checkbox" name="check" value="list"></td>
-                {{else}}
+                {{#if isChecked}}
                     <td><input id="chBox" type="checkbox" name="check" value="list"></td>
+                {{else}}
+                    <td><input checked id="chBox" type="checkbox" name="check" value="list"></td>
                 {{/if}}
                 <td>
                     {{#if isEditing}}
