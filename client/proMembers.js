@@ -1,7 +1,7 @@
 Template.proMembers.helpers({
     //기존 존재하는 멤버 목록들을 보여준다.
     members: function() {
-        //return projectMemberDB.find({isAccepted: true}).fetch();
+        return projectMemberDB.find({isAccepted: true}).fetch();
 
         //하고싶은 일: 조건(해당 프로젝트 && isAccepted가 true)에 맞는 이메일과 이름을 띄우고 싶다
         //어려운점: projectMemberDB (프로젝트 팀원DB)에서는 이메일은 있으나, 이름은 다른DB(userDB)에 있음,
@@ -36,11 +36,14 @@ Template.proMembers.events({
 
     //회원 추방 버튼 (탈퇴아님, 프로젝트에서 추방하는것임)
     'click #iconDelete': function(evt, tmpl) {
+        alert(SessionStore.get('myEmail'))
+        alert(SessionStore.get('curProject'))
         //매니저만 삭제기능을 사용 할 수 있음 그러므로 매니저 검증 ㄱㄱ
         var loginedId = SessionStore.get('myEmail'); //지금 로그인한 애 아이디
         var currentProject = SessionStore.get('curProject');
 
-        var manager = projectDB.findOne({$and: [{name: currentProject}, {manager_username: loginedId}]}); //지금 로그인한 놈이 현재 프로젝트의 매니저인가?
+
+        var manager = projectDB.findOne({$and: [{_id: currentProject}, {manager_username: loginedId}]}); //지금 로그인한 놈이 현재 프로젝트의 매니저인가?
         if (manager !== undefined) { //응 매니저 맞음
             //회원 추방 가능
             projectMemberDB.remove({_id: this._id}); //클릭한 놈(추방할 대상)의 아이디로 찾아서 삭제
