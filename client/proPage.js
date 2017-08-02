@@ -30,17 +30,18 @@ Template.proPage.helpers({
             return 0;
         }
         return (curProjectTodosCompletedCount / curProjectTodosCount) * 100;
+    },
+
+    project: function () {
+        return projectDB.find({_id: SessionStore.get('curProject')}).fetch();
     }
 
 });
 
 Template.proPage.events({
-
-
-
     // 할 일 체크
     'click #chBox': function(evt, tmpl) {
-        if ($("chBox").checked) {
+        if ($("chBox").checked) { //체크가 되어있으면
             todoDB.update({_id: this._id},
                 {
                     $set: {
@@ -91,7 +92,7 @@ Template.proPage.events({
     // 할 일 추가
     'click #btnAdd': function(evt, tmpl) {
         var strAdd = $('#inpAdd').val();
-        var currentProject = Session.get('curProject');
+        var currentProject = SessionStore.get('curProject');
 
         todoDB.insert({
             createdAt: new Date(),
