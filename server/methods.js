@@ -3,6 +3,7 @@ Meteor.methods({
     //회원 탈퇴하기
     'removeUser': function(email) {
         userDB.remove({username: email});
+        projectMemberDB.remove({member_username: email});
         return {
             status: 'success'
         }
