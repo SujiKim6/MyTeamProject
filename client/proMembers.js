@@ -70,19 +70,19 @@ Template.proMembers.events({
 
     //매니저 위임 버튼 구현
     'click #giveManager': function (evt, tmpl) {
-        alert('run')
+        // alert('run')
         var loginedId = SessionStore.get('myEmail'); //현재 로그인 된 회원의 아이디
         var user = projectMemberDB.findOne({member_username: loginedId}); //현재 로그인된 회원
         var manager = projectDB.findOne({manager_username: loginedId}); //로그인 된 사람이 매니저이면 나오고, 아니면 undefined
         var currentProject = SessionStore.get('curProject');
-        var memberDBs = projectMemberDB.findOne({project_id: currentProject});
-        alert(memberDBs.member_username)
+
+        var memberDBs = projectMemberDB.findOne({_id: this._id});
+
         if (manager !== undefined) {
             //해당 프로젝트가 맞고, 현재 사용자가 매니저라면 위임이 가능함
             if (confirm('매니저를 위임하시겠습니까?')) {
                 Meteor.call('managerChange', memberDBs, function (err, rslt) {
                     if (rslt.status === 'success') {
-                        // alert('dd')
                     }
                     else {
                         alert('매니저 위임 실패')
