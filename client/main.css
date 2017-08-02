@@ -167,3 +167,13 @@ input:checked + .slider:before {
     text-align: center;
 
 }
+
+.item {
+    text-align: center;
+
+}
+
+#myPageGlyphicon {
+    font-size: 350%;
+    color: #2196F3;
+}

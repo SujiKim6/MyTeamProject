@@ -128,6 +128,10 @@ Template.proPage.events({
             isComplete: false
         });
         $("#inpAdd").val('');
+    },
+
+    'click #btnEdit':function () {
+        location.href='/tab/proPageEdit'
     }
 
 });
