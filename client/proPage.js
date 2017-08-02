@@ -5,8 +5,14 @@ Template.proPage.onRendered(function() {
 });
 
 Template.proPage.helpers({
+    array: function() {
+        return todoDB.find({project_id:SessionStore.get('curProject')}).fetch();
+    },
+
     isComplete: function() {
-        return Session.get('isChecked')
+        // alert(this.isComplete)
+        // return Session.get('isChecked')
+        return this.isComplete;
     },
 
     isEditing: function() {
@@ -16,10 +22,6 @@ Template.proPage.helpers({
         else {
             return false;
         }
-    },
-
-    array: function() {
-        return todoDB.find({project_id:SessionStore.get('curProject')}).fetch();
     },
 
     percentage: function () {
@@ -39,18 +41,22 @@ Template.proPage.helpers({
 });
 
 Template.proPage.events({
+    'click #btnDelete': function(evt, tmpl) {
+        if(confirm('정말 삭제하시겠습니까?')) {
+            Meteor.call('removeProject', SessionStore.get('curProject'), function(err, rslt) {
+                if(rslt.status === 'success') {
+                    location.href='/proMain';
+                }
+                else {
+                    alert('프로젝트 생성에 문제가 있습니다.');
+                }
+            });
+        };
+    },
 
     // 할 일 체크
     'click #chBox': function(evt, tmpl) {
-        if ($("chBox").checked) { //체크가 되어있으면
-            todoDB.update({_id: this._id},
-                {
-                    $set: {
-                        isComplete: false
-                    }
-                });
-            Session.set('isChecked', false)
-        } else {
+        if ($(evt.target).is(':checked')) { //체크가 되어있으면
             todoDB.update({_id: this._id},
                 {
                     $set: {
@@ -58,6 +64,14 @@ Template.proPage.events({
                     }
                 });
             Session.set('isChecked', true)
+        } else {
+            todoDB.update({_id: this._id},
+                {
+                    $set: {
+                        isComplete: false
+                    }
+                });
+            Session.set('isChecked', false)
         }
     },
 
@@ -93,7 +107,6 @@ Template.proPage.events({
     // 할 일 추가
     'click #btnAdd': function(evt, tmpl) {
         var strAdd = $('#inpAdd').val();
-        var currentProject = SessionStore.get('curProject');
 
         todoDB.insert({
             createdAt: new Date(),
