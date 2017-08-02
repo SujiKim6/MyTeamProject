@@ -13,6 +13,17 @@ Template.proMembers.helpers({
     //project의 구성원 총 인원을 알아내기 위함
     count:function () {
         return projectMemberDB.find({$and: [{project_id: SessionStore.get('curProject')}, {isAccepted: true}]}).count();
+    },
+
+    //매니저인가?
+    isManager: function () {
+
+        var project = projectDB.findOne({_id: this.project_id});
+        if(project.manager_username === this.member_username) {
+            return true
+        }
+        else return false;
+
     }
 });
 
@@ -59,18 +70,20 @@ Template.proMembers.events({
 
     //매니저 위임 버튼 구현
     'click #giveManager': function (evt, tmpl) {
+        alert('run')
         var loginedId = SessionStore.get('myEmail'); //현재 로그인 된 회원의 아이디
         var user = projectMemberDB.findOne({member_username: loginedId}); //현재 로그인된 회원
         var manager = projectDB.findOne({manager_username: loginedId}); //로그인 된 사람이 매니저이면 나오고, 아니면 undefined
         var project = true;
         var currentProject = Session.get('curProject');
         
-        if (user.project_id !== currentProject) { //현재 이 프로젝트인가?
-            project = false;
-        }
+        // if (user.project_id !== currentProject) { //현재 이 프로젝트인가?
+        //
+        //     project = false;
+        // }
         if ((project === true) && (manager !== undefined)) { //해당 프로젝트가 맞고, 현재 사용자가 매니저라면 위임이 가능함
             if (confirm('매니저를 위임하시겠습니까?')) {
-                //매니저위임
+                //매니저위임 - 서버에서 처리할것
                 projectMemberDB.update({project_id: currentProject}, { //현재 프로젝트를 찾아,
                     $set: { //매니저 이메일을 현재 클릭한 이메일로 바꿈
                         manager_username: this.username
