@@ -19,7 +19,6 @@ Template.projectMain.helpers({
             var curProjectId = memberDBs[i].project_id;
             projects.push(projectDB.findOne({_id: curProjectId}));
         }
-
         return projects;
     }
 });
@@ -27,6 +26,8 @@ Template.projectMain.helpers({
 Template.projectMain.events({
     // 프로젝트 선택
     'click #btnProject': function(evt, tmpl) {
-
+        var id = $('#getProjectID').val()
+        SessionStore.set('curProject',$('#getProjectID').val());
+        alert(id);
     }
 });
