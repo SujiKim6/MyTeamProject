@@ -1,14 +1,16 @@
 <template name="projectMain">
 
-    <div row>
-        <div class="col-xs-12">
-            <div class="alert alert-info" role="alert">
-                새로운 프로젝트 멤버 요청이 있습니다.
-                <button id="accept" type="button" style="float: inherit;">수락</button>
-                <button id="refuse" type="button" style="float: right;">거절</button>
+    {{#if isAlram}}
+        <div row>
+            <div class="col-xs-12">
+                <div class="alert alert-info" role="alert">
+                    새로운 프로젝트 멤버 요청이 있습니다.
+                    <button id="accept" type="button" style="float: inherit;">수락</button>
+                    <button id="refuse" type="button" style="float: right;">거절</button>
+                </div>
             </div>
         </div>
-    </div>
+    {{/if}}
 
     <!--<div class="container">-->
     <table class="table">

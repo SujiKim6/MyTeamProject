@@ -19,8 +19,13 @@ Template.projectMain.helpers({
             var curProjectId = memberDBs[i].project_id;
             projects.push(projectDB.findOne({_id: curProjectId}));
         }
-
         return projects;
+    },
+
+    //알람이 온 것이 있는지 확인
+    isAlram: function() {
+        var memberDBs = projectMemberDB.find({member_username: SessionStore.get('myEmail')}).fetch()
+        return memberDBs.isAccepted
     }
 });
 
