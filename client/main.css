@@ -6,6 +6,7 @@
 
 #title {
     text-align: center;
+    color: #022241;
 }
 #addProjectPlusBtn {
     border: 0;
@@ -128,3 +129,7 @@ input:checked + .slider:before {
 .usertb {
     text-align: center;
 }
+
+/*body {*/
+    /*background-color: #d8ecf8;*/
+/*}*/

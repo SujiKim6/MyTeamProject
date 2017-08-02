@@ -22,5 +22,8 @@ Template.projectMain.helpers({
 });
 
 Template.projectMain.events({
-
+    // 프로젝트 목록에서 프로젝트 하나 클릭했을 경우
+    'click #btnProject':function () {
+        SessionStore.set('currentProjectID',)
+    }
 });

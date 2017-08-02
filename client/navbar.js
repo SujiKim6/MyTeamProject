@@ -11,12 +11,12 @@ Template.navbar.events({
     'click #brandName':function () {
         if(SessionStore.get('myEmail')===' ')
         {
-            location.href="/";
+            window.location="http://localhost:3000/";
             return;
         }
         else
         {
-            location.href="/proMain";
+            window.location.href="http://localhost:3000/proMain";
             return;
         }
     },
@@ -30,7 +30,7 @@ Template.navbar.events({
     'click #myPage':function () {
         if(SessionStore.get('myEmail')!==' ')
         {
-            location.href="/mypage.html";
+            window.location.href="/mypage";
             return;
         }
     }
