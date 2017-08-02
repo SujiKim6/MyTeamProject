@@ -3,13 +3,6 @@ Template.proMembers.helpers({
     members: function() {
         var currentProject = SessionStore.get('curProject');
         return projectMemberDB.find({$and: [{project_id: currentProject}, {isAccepted: true}]}).fetch();
-
-        //하고싶은 일: 조건(해당 프로젝트 && isAccepted가 true)에 맞는 이메일과 이름을 띄우고 싶다
-        //어려운점: projectMemberDB (프로젝트 팀원DB)에서는 이메일은 있으나, 이름은 다른DB(userDB)에 있음,
-        // email이라는 유니크키가 있으므로 userDB에서 해당 이메일의 이름을 찾아올수는 있음
-        // 근데 두개를 join하여 화면에 형식에 맞게 출력해주고싶은데 잘 안된다.
-
-        //차선 방안 : 그냥 projectMemberDB에 이름도 넣는다..
     },
 
     project: function () {
