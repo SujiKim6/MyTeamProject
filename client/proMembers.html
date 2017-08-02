@@ -5,6 +5,7 @@
         {{#each project}}
             <div id="title2">{{name}} 의 구성원</div>
         {{/each}}
+        <br>
         <div style="text-align: right">프로젝트 참여인원 : {{count}}명</div>
 
         <br>
@@ -13,14 +14,21 @@
     <div class="col-xs-12">
         <table class="table">
             <tr>
+
+                <th width="5%" class="usertb"></th>
                 <th width="20%" class="usertb">이름</th>
-                <th width="60%" class="usertb">이메일</th>
+                <th width="55%" class="usertb">이메일</th>
                 <th width="20%" class="usertb">추방 / 위임</th>
             </tr>
             {{#each members}}
                 <tr>
-                    <td class="usertb">{{name}}</td> <!-- 아직 안보이는게 맞음 -->
-                    <td class="usertb">{{member_username}}</td>
+                    {{#if isManager}}
+                        <td class="usertb"><span id="iconDelete" class="glyphicon glyphicon-star" aria-hidden="true"></span></td>
+                    {{else}}
+                        <td class="usertb"></td>
+                    {{/if}}
+                    <td class="usertb">{{name}}</td>
+                    <td id='username' class="usertb">{{member_username}}</td>
                     <td class="usertb">
                         <span id="iconDelete" class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp; &nbsp; &nbsp;
                         <span id="giveManager" class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
