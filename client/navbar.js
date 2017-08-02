@@ -30,7 +30,7 @@ Template.navbar.events({
     'click #myPage':function () {
         if(SessionStore.get('myEmail')!=='')
         {
-            location.href="/mypage.html";
+            location.href="/mypage"; //뒤에 html 붙이면 안됨~~ 붙여져있길래 수정함 - by희림
             return;
         }
     }

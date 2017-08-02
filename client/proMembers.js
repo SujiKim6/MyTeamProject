@@ -1,24 +1,13 @@
 Template.proMembers.helpers({
     //기존 존재하는 멤버 목록들을 보여준다.
     members: function() {
-        //리턴을 이름과 이메일 두개를 가진 array로 하면..?
-        //이메일로 이름 찾아오기
-        //회원 목록 이메일
-
         //return projectMemberDB.find({isAccepted: true}).fetch();
 
-        var membersArray= []; // 프로젝트 멤버들을 저장하는 배열 (이름과 이메일)
+        //하고싶은 일: 조건(해당 프로젝트 && isAccepted가 true)에 맞는 이메일과 이름을 띄우고 싶다
+        //어려운점: projectMemberDB (프로젝트 팀원DB)에서는 이메일은 있으나, 이름은 다른DB(userDB)에 있음,
+        // email이라는 유니크키가 있으므로 userDB에서 해당 이메일의 이름을 찾아올수는 있음
+        // 근데 두개를 join하여 화면에 형식에 맞게 출력해주고싶은데 잘 안된다.
 
-        // 현재 프로젝트의 멤버들
-        var acceptedMembers = projectMemberDB.find({isAccepted: true}).fetch();
-
-        // 찾은 프로젝트 멤버들 이메일로 이름들 찾기
-        for(var i = 0; i < acceptedMembers.length; i++) {
-            var curMemberName = acceptedMembers[i].member_username;
-            membersArray.push(userDB.findOne({username: curMemberName}));
-        }
-
-        return membersArray;
     }
 });
 
@@ -45,11 +34,19 @@ Template.proMembers.events({
         //해당 회원이 userDB에 존재하지않으면 초대 이메일을 보냄 - 추후 구현
     },
 
-    //회원 삭제
+    //회원 추방 버튼 (탈퇴아님, 프로젝트에서 추방하는것임)
     'click #iconDelete': function(evt, tmpl) {
-        if(confirm('정말 추방 하시겠습니까?')) {
-            projectMemberDB.remove({_id: this._id});
-        };
+        //매니저만 삭제기능을 사용 할 수 있음 그러므로 매니저 검증 ㄱㄱ
+        var loginedId = SessionStore.get('myEmail'); //지금 로그인한 애 아이디
+        var currentProject = SessionStore.get('curProject');
+
+        var manager = projectDB.findOne({$and: [{name: currentProject}, {manager_username: loginedId}]}); //지금 로그인한 놈이 현재 프로젝트의 매니저인가?
+        if (manager !== undefined) { //응 매니저 맞음
+            //회원 추방 가능
+            projectMemberDB.remove({_id: this._id}); //클릭한 놈(추방할 대상)의 아이디로 찾아서 삭제
+        } else { //매니저 아님
+            confirm('매니저만 추방할 수 있습니다.');
+        }
     },
 
     //매니저 위임 버튼 구현

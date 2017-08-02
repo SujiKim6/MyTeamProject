@@ -23,9 +23,10 @@ Template.proPage.helpers({
     },
 
     percentage: function () {
-        var curProjectTodosCount = todoDB.find({project_id:'project DBs ID'}).count();
-        var curProjectTodosCompletedCount = todoDB.find({project_id:'project DBs ID', isComplete: true}).count();
-        if (curProjectTodosCount === 0) {
+        var currentProject = SessionStore.get('curProject'); //현재 보고있는 프로젝트 아이디
+        var curProjectTodosCount = todoDB.find({project_id: currentProject}).count(); //그냥 할일 전체
+        var curProjectTodosCompletedCount = todoDB.find({project_id: currentProject, isComplete: true}).count(); //할일 완료한 애
+        if (curProjectTodosCount === 0) { //0으로 못 나누므로 할일이 없으면 그냥 0% 처리한다
             return 0;
         }
         return (curProjectTodosCompletedCount / curProjectTodosCount) * 100;
