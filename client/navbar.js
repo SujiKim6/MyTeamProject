@@ -23,12 +23,12 @@ Template.navbar.events({
 
     //로그아웃 탭 눌렀을 때 처리
     'click #signOut':function () {
-        SessionStore.set('myEmail',' ');
+        SessionStore.set('myEmail','');
     },
 
     //마이페이지 탭 눌렀을 때 처리
     'click #myPage':function () {
-        if(SessionStore.get('myEmail')!==' ')
+        if(SessionStore.get('myEmail')!=='')
         {
             location.href="/mypage.html";
             return;
