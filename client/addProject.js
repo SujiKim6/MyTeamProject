@@ -43,6 +43,7 @@ Template.addProject.events({
         var project_goal =  $('#projectGoal').val();
         var startDate =  $('#inpStartDate').val();
         var endDate =  $('#inpEndDate').val();
+        var isPublic = Session.get('isPublic');
 
         // 빈칸을 모두 채우지 않을 경우 에러메세지 띄우고 돌아가기
         if((project_name === "" )||(project_goal ==="")||(startDate==="") ||(endDate==="") )
@@ -63,7 +64,7 @@ Template.addProject.events({
             startAt: startDate,
             endAt: endDate,
             manager_username: SessionStore.get('myEmail'),
-            isPublic: true
+            isPublic: isPublic
         });
 
         projectMemberDB.insert({
