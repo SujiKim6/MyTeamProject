@@ -1,8 +1,8 @@
 <template name="proPage">
     <br>
     {{#each project}}
-    <div id="title2">{{name}}</div>
-    <div id="date">{{startAt}} ~ {{endAt}}</div>
+        <div id="title2">{{name}}</div>
+        <div id="date">{{startAt}} ~ {{endAt}}</div>
     {{/each}}
     <br>
 
@@ -55,17 +55,7 @@
         </div>
     </div>
 
-    <br><br>
-
-    <div id="btnpro">
-
-        <button type="button" class="btn btn-default">프로젝트 편집</button>
-
-        <button id="btnDelete" type="button" class="btn btn-default">프로젝트 삭제</button>
-
-    </div>
-
-
-
+    <button type="btnEdit" class="btn btn-default" style="float: left;">프로젝트 편집</button>
+    <button id="btnDelete" type="button" class="btn btn-default" style="float: right;">프로젝트 삭제</button>
 
 </template>

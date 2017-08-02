@@ -17,8 +17,7 @@ projectMemberDB = new Mongo.Collection('projectMemberDB');
 //
 // var project = {
 //     createdAt: new Date(),
-//     name: 'project name',
-//     goal: 'goal string',
+//     name: 'project name'
 //     startAt: new Date(),
 //     endAt: new Date(),
 //     manager_username:'email'

@@ -41,6 +41,19 @@ Template.proPage.helpers({
 });
 
 Template.proPage.events({
+    // // 프로젝트를 편집하기
+    // 'click #btnEdit': function(evt, tmpl) {
+    //     Meteor.call('editProject', projectDB.find({_id: SessionStore.get('curProject')}).fetch(), function(err, rslt) {
+    //         if(rslt.status === 'success') {
+    //
+    //         }
+    //         else {
+    //
+    //         }
+    //     });
+    //
+    // },
+
     'click #btnDelete': function(evt, tmpl) {
         if(confirm('정말 삭제하시겠습니까?')) {
             Meteor.call('removeProject', SessionStore.get('curProject'), function(err, rslt) {
