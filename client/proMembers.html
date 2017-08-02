@@ -1,16 +1,14 @@
 <template name="proMembers">
 
+    <div class="container">
     <br>
     {{#each project}}
         <div id="title2">{{name}} 의 구성원</div>
-        <div id="date">{{startAt}} ~ {{endAt}}</div> <!-- 여기에 몇명 있는지 보여주고싶은데.. -->
     {{/each}}
-
-    {{#each count}}
-        <div id="date">{{count}}</div>
-    {{/each}}
+    <div style="text-align: right">프로젝트 참여인원 : {{count}}명</div>
 
     <br>
+    </div>
 
     <div class="col-xs-12">
         <table class="table">

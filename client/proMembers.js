@@ -14,6 +14,10 @@ Template.proMembers.helpers({
 
     project: function () {
         return projectDB.find({_id: SessionStore.get('curProject')}).fetch();
+    },
+
+    count:function () {
+        return projectMemberDB.find({$and: [{project_id: SessionStore.get('curProject')}, {isAccepted: true}]}).count();
     }
 });
 
