@@ -130,7 +130,8 @@ Template.proPage.events({
         $("#inpAdd").val('');
     },
 
-    'click #btnEdit':function () {
+    // 프로젝트 편집 클릭시 편집할 수 있는 화면으로 이동
+    'click #btnProjectEdit':function () {
         location.href='/tab/proPageEdit'
     }
 
