@@ -1,5 +1,13 @@
 Meteor.methods({
 
+    //회원 탈퇴하기
+    'removeUser': function(email) {
+        userDB.remove({username: email});
+        return {
+            status: 'success'
+        }
+    },
+
     // 매니저 위임하기
     'managerChange': function(memberDBs) {
         projectDB.update({_id: memberDBs.project_id}, {
