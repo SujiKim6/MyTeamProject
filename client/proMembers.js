@@ -60,9 +60,19 @@ Template.proMembers.events({
         var currentProject = SessionStore.get('curProject');
 
         var manager = projectDB.findOne({$and: [{_id: currentProject}, {manager_username: loginedId}]}); //지금 로그인한 놈이 현재 프로젝트의 매니저인가?
-        if (manager !== undefined) { //응 매니저 맞음
+        //디스가 프로젝트 매니저가아니어야함
+        if ((manager !== undefined)) { //응 매니저 맞음
+
+            if (loginedId === this.member_username) {
+                alert('자기자신을 추방할 수 없습니다!');
+                return;
+            }
+
             //회원 추방 가능
-            projectMemberDB.remove({_id: this._id}); //클릭한 놈(추방할 대상)의 아이디로 찾아서 삭제
+            if (confirm('회원을 추방하시겠습니까?')) {
+                projectMemberDB.remove({_id: this._id}); //클릭한 놈(추방할 대상)의 아이디로 찾아서 삭제
+                return;
+            }
         } else { //매니저 아님
             confirm('매니저만 추방할 수 있습니다.');
         }
@@ -79,6 +89,10 @@ Template.proMembers.events({
         var memberDBs = projectMemberDB.findOne({_id: this._id});
 
         if (manager !== undefined) {
+            if (loginedId === this.member_username) {
+                alert('이미 매니저입니다.');
+                return;
+            }
             //해당 프로젝트가 맞고, 현재 사용자가 매니저라면 위임이 가능함
             if (confirm('매니저를 위임하시겠습니까?')) {
                 Meteor.call('managerChange', memberDBs, function (err, rslt) {
