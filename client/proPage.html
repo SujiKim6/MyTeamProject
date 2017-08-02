@@ -19,11 +19,7 @@
         </tr>
         {{#each array}}
             <tr>
-                {{#if isComplete}}
-                    <td><input checked id="chBox" type="checkbox" name="check" value="list"></td>
-                {{else}}
-                    <td><input id="chBox" type="checkbox" name="check" value="list"></td>
-                {{/if}}
+                <td><input id="chBox" type="checkbox" name="check" value="list"></td>
                 <td>
                     {{#if isEditing}}
                         <input id="inpEdit" type="text" value="{{todo}}"><button id="btnEdit" type="button">편집</button>
