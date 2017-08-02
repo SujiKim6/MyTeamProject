@@ -1,0 +1,69 @@
+<template name="changeProject">
+    <div class="container">
+    <div class="row">
+            <div class="project_name">
+                <div class="col-xs-2 col-sm-3 col-md-2">
+                    <label class="control-label" for="focusedInput" style="margin-top: 10%">이름 </label>
+                </div>
+                <div class="col-xs-10 col-sm-9 col-md-10">
+                    <input class="form-control" id="projectName"  type="text" placeholder="프로젝트 이름을 입력해주세요.">
+                </div>
+            </div>
+        </div> <br>
+        <div class="row">
+            <div class="project_date">
+                <div>
+                    <div class="col-xs-2 col-sm-3 col-md-2">
+                        <label class="control-label" for="focusedInput" style="margin-top: 10%">시작</label>
+                    </div>
+                    <div class="col-xs-10 col-sm-4 col-md-4">
+                        <input id="inpStartDate" class="btn btn-default" style="width: 100%" type="date">
+                    </div>
+                </div>
+                <div>
+                    <div class="col-xs-2 col-sm-3 col-md-2">
+                        <label class="control-label" for="focusedInput" style="margin-top: 10%">종료</label>
+                    </div>
+                    <div class="col-xs-10 col-sm-4 col-md-4">
+                        <input id="inpEndDate" class="btn btn-default" style="width: 100%" type="date">
+                    </div>
+                </div>
+            </div>
+    </div>
+        <br>
+
+
+        <div class="form-group">
+            <label class="control-label" for="inputLarge">프로젝트 목표 (50자이내)</label>
+            <input class="form-control input-lg" type="text" placeholder="내용을 입력해주세요" id="projectGoal">
+        </div>
+
+
+        <br>
+        <div>
+            <label class="control-label" for="inputLarge">공개여부</label>
+            <div>
+                <form>
+                    <input id="public" type="radio" name="gender" value="male" checked> 공개 &nbsp;&nbsp;
+                    <input id="private" type="radio" name="gender" value="female"> 비공개
+                </form>
+            </div>
+        </div> <br>
+        <div>
+            {{#if isPublic}}
+                <input class="form-control" type="text" placeholder="프로젝트 비밀번호를 입력하세요." style="visibility: hidden">
+            {{else}}
+                <input class="form-control" type="text" placeholder="프로젝트 비밀번호를 입력하세요.">
+            {{/if}}
+
+        </div> <br>
+
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4"></div>
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <a id="confirmBtn" href="/proMain" class="btn btn-default" style="width: 100%">확인</a>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4"></div>
+        </div>
+    </div>
+</template>

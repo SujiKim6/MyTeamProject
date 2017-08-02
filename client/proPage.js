@@ -39,6 +39,40 @@ Template.proPage.helpers({
 });
 
 Template.proPage.events({
+    //프로젝트 삭제: client에서 원래 안된대..ㄷㄷ
+    'click #projectDelete': function (evt, tmpl) {
+        //매니저만 삭제기능을 사용 할 수 있음 그러므로 매니저 검증 ㄱㄱ
+        var loginedId = SessionStore.get('myEmail'); //지금 로그인한 애 아이디
+        var currentProject = SessionStore.get('curProject');
+
+        var manager = projectDB.findOne({$and: [{_id: currentProject}, {manager_username: loginedId}]}); //지금 로그인한 놈이 현재 프로젝트의 매니저인가?
+        if (manager !== undefined) { //응 매니저 맞음
+            //프로젝트, 프로젝트 멤버, 할일 삭제
+            projectDB.remove({_id: currentProject});
+            projectMemberDB.remove({project_id: currentProject});
+            todoDB.remove({project_id: currentProject});
+        } else { //매니저 아님
+            confirm('매니저만 프로젝트를 삭제 할 수 있습니다.');
+        }
+    },
+
+    //프로젝트 변경 -아직 화면이 없음;;
+    /*'click #projectUpdate': function (evt, tmpl) {
+        var loginedId = SessionStore.get('myEmail'); //지금 로그인한 애 아이디
+        var currentProject = SessionStore.get('curProject');
+
+        var manager = projectDB.findOne({$and: [{_id: currentProject}, {manager_username: loginedId}]}); //지금 로그인한 놈이 현재 프로젝트의 매니저인가?
+        if (manager !== undefined) { //응 매니저 맞음
+            //프로젝트 변경
+            projectDB.update({_id: currentProject},{
+                $set: { //해당 필드만 바꿈 set오브젝트
+
+                }
+            });
+        } else { //매니저 아님
+            confirm('매니저만 프로젝트를 삭제 할 수 있습니다.');
+        }
+    },*/
 
     // 할 일 체크
     'click #chBox': function(evt, tmpl) {
