@@ -1,5 +1,17 @@
 Meteor.methods({
 
+    // 매니저 위임하기
+    'managerChange': function(memberDBs) {
+        projectDB.update({_id: memberDBs.project_id}, {
+            $set: {
+                manager_username: memberDBs.member_username
+            }
+        });
+        return {
+            status: 'success'
+        }
+    },
+
     // // 프로젝트를 편집하기
     // 'editProject': function(projectDB) {
     //     projectDB.update({_id: projectDB.project_id}, {
