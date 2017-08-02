@@ -90,11 +90,12 @@ Template.proPage.events({
     // 할 일 추가
     'click #btnAdd': function(evt, tmpl) {
         var strAdd = $('#inpAdd').val();
+        var currentProject = Session.get('curProject');
 
         todoDB.insert({
             createdAt: new Date(),
             todo: strAdd,
-            project_id:'project DBs ID',
+            project_id: currentProject,
             isComplete: false
         });
         $("#inpAdd").val('');

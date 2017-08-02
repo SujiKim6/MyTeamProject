@@ -30,13 +30,14 @@ Template.proMembers.events({
 
         var invitedUserEmail = $('#inviteInput').val(); //인풋박스(inviteInput)에 입력된 회원의 아이디를 가져옴
         var invitedUser = userDB.findOne({username: invitedUserEmail}); //초대할 사람의 email을 userDB에서 검색
+        var currentProject = Session.get('curProject');
 
         //해당 회원이 userDB에 존재(팀허브에 가입된 회원)하면 바로 앱 내에서 초대,
         if (invitedUser !== undefined) { //회원 존재하면 일단 넣음 (isAccepted는 초대받은 회원이 수락을 누르면 true로 바뀌고 정식 등록됨)
             //회원등록, 그러나 Accepted 안된 상태
             projectMemberDB.insert({
                 createdAt: new Date(),
-                project_id: '현재프로젝트아이디',
+                project_id: currentProject,
                 member_username: invitedUserEmail,
                 isAccepted: false
             })
@@ -57,7 +58,7 @@ Template.proMembers.events({
         var user = projectMemberDB.findOne({member_username: loginedId}); //현재 로그인된 회원
         var manager = projectDB.findOne({manager_username: loginedId}); //로그인 된 사람이 매니저이면 나오고, 아니면 undefined
         var project = true;
-        var currentProject = '현재프로젝트아이디'; //현재 들어와있는 프로젝트, 코드 아직 구현 못함 (session써야할 각)
+        var currentProject = Session.get('curProject');
         
         if (user.project_id !== currentProject) { //현재 이 프로젝트인가?
             project = false;
