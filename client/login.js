@@ -17,7 +17,7 @@ Template.login.events({
             return;
         }
 
-        // 이메일을 올바르게 입력하고 비밀번호도 맞았을 경우
+
         else if($('#passwordInput').val() === userDB.findOne({username:$('#emailInput').val()}).password)
         {
             location.href="/proMain";
@@ -32,5 +32,11 @@ Template.login.events({
             return;
         }
 
+        // 이메일을 올바르게 입력하고 비밀번호도 맞았을 경우
+        location.href="/proMain";
+        SessionStore.set('myEmail', $('#emailInput').val());
+        return {
+            status: 'success'
+        }
     }
 });
