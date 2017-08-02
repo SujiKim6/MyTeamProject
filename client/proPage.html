@@ -1,7 +1,9 @@
 <template name="proPage">
     <br>
-    <div id="title2">프로젝트 1</div>
-    <div id="date">2017.07.24 ~ 2017.07.28</div>
+    {{#each projectDetail}}
+        <div id="title2"><strong>{{name}}</strong></div>
+        <div id="date">{{startAt}} ~ {{endAt}}</div>
+    {{/each}}
     <br>
 
     <!-- 프로그래스 바 -->
