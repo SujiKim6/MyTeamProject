@@ -7,10 +7,9 @@ Template.projectMain.onRendered(function() {
 
 Template.projectMain.helpers({
     array: function() {
-        var projects = []; // 프로젝트명을 저장하는 배열
 
-        // 이메일이 제대로 들어갔는지 테스트
-        // alert(SessionStore.get('myEmail'))
+        // 프로젝트명을 저장하는 배열
+        var projects = [];
 
         // 현재 사용자가 속한 프로젝트 찾기
         var memberDBs = projectMemberDB.find({member_username: SessionStore.get('myEmail')}).fetch();
@@ -20,11 +19,15 @@ Template.projectMain.helpers({
             var curProjectId = memberDBs[i].project_id;
             projects.push(projectDB.findOne({_id: curProjectId}));
         }
-
         return projects;
     }
 });
 
 Template.projectMain.events({
-
+    // 프로젝트 선택
+    'click #btnProject': function(evt, tmpl) {
+        var id = $('#getProjectID').val()
+        SessionStore.set('curProject',$('#getProjectID').val());
+        alert(id);
+    }
 });
