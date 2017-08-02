@@ -6,7 +6,8 @@ Template.proPage.onRendered(function() {
 
 Template.proPage.helpers({
     projectDetail:function () {
-        return  projectDB.findOne({_id:SessionStore.get('curProject')}).fetch();
+        var project = projectDB.find({_id:SessionStore.get('curProject')}).fetch();
+        return project;
     },
     isComplete: function() {
         return Session.get('isChecked')
@@ -93,7 +94,7 @@ Template.proPage.events({
     // 할 일 추가
     'click #btnAdd': function(evt, tmpl) {
         var strAdd = $('#inpAdd').val();
-
+        alert(SessionStore.get('curProject'))
         todoDB.insert({
             createdAt: new Date(),
             todo: strAdd,
