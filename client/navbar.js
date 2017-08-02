@@ -5,11 +5,10 @@ $(function() {
 });
 
 Template.navbar.events({
-    // 페이지 옮기는 거 처리하기
-
     //teamhub 눌렀을 때 처리
     'click #brandName':function () {
-        if(SessionStore.get('myEmail')==='')
+        alert(SessionStore.get('myEmail'))
+        if(SessionStore.get('myEmail')==' ')
         {
             location.href="/";
             return;
@@ -23,14 +22,14 @@ Template.navbar.events({
 
     //로그아웃 탭 눌렀을 때 처리
     'click #signOut':function () {
-        SessionStore.set('myEmail','');
+        SessionStore.set('myEmail',' ');
     },
 
     //마이페이지 탭 눌렀을 때 처리
     'click #myPage':function () {
-        if(SessionStore.get('myEmail')!=='')
+        if(SessionStore.get('myEmail')!=' ')
         {
-            location.href="/mypage.html";
+            location.href="/mypage";
             return;
         }
     }

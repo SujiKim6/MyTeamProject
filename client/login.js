@@ -17,16 +17,7 @@ Template.login.events({
             return;
         }
 
-
-        else if($('#passwordInput').val() === userDB.findOne({username:$('#emailInput').val()}).password)
-        {
-            location.href="/proMain";
-            SessionStore.set('myEmail', $('#emailInput').val());
-            return;
-        }
-
-        // 이메일은 올바르게 입력했지만 비밀번호가 틀렸을 경우
-        else
+        else if($('#passwordInput').val() !== userDB.findOne({username:$('#emailInput').val()}).password)
         {
             alert("비밀번호가 틀렸습니다.");
             return;
