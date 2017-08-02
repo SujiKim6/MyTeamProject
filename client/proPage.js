@@ -93,7 +93,6 @@ Template.proPage.events({
     // 할 일 추가
     'click #btnAdd': function(evt, tmpl) {
         var strAdd = $('#inpAdd').val();
-        var currentProject = SessionStore.get('curProject');
 
         todoDB.insert({
             createdAt: new Date(),
@@ -102,6 +101,13 @@ Template.proPage.events({
             isComplete: false
         });
         $("#inpAdd").val('');
+    },
+
+    //프로젝트 삭제
+    'click #projectDelete': function (evt, tmpl) {
+        if(confirm('한번 삭제하면 되돌릴 수 없습니다. 그래도 삭제하시겠습니까?')) {
+
+        }
     }
 
 });
