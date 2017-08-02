@@ -24,7 +24,22 @@ Template.mypage.helpers({
 
 
 Template.mypage.events({
-    //변경버튼을 누른 다음에 창이 바뀌고 확인버튼 눌렀을 때 변경이 되야한다구
+
+    'click #memberOut': function () {
+        if (alert('정말 탈퇴하시겠습니까?')) {
+            Meteor.call('removeUser', SessionStore.get('myEmail'), function (err, rslt) {
+                if (rslt.status === 'success') {
+                    alert('s')
+                    location.href='/';
+                }
+                else {
+                    alert('매니저 위임 실패')
+                }
+            });
+        }
+    },
+
+//변경버튼을 누른 다음에 창이 바뀌고 확인버튼 눌렀을 때 변경이 되야한다구
     'click #confirmChange': function () {
         var loginedId = $('#usernameInput').val();
         var newPassword = $('#passwordInput').val();

@@ -1,4 +1,13 @@
 Meteor.methods({
+
+    // 회원 탈퇴하기
+    'removeUser': function(email) {
+        userDB.remove({username: email});
+        return {
+            status: 'success'
+        }
+    }/*,
+
     // 마이페이지 변경 부분 server에서 처리하기
     'updateUser': function(loginedId, newPassword, newName) {
         var updateRslt = userDB.update({username: loginedId}, {
@@ -18,8 +27,8 @@ Meteor.methods({
                 status: 'something goes wrong'
             }
         }
-
     },
+
     'editTodo' :function(data) {
 
         todoDB.update({_id: data._id}, {
@@ -31,6 +40,6 @@ Meteor.methods({
         return {
             status: 'error'
         }
+    }*/
 
-    }
 });
