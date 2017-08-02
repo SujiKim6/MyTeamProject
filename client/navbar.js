@@ -7,7 +7,6 @@ $(function() {
 Template.navbar.events({
     //teamhub 눌렀을 때 처리
     'click #brandName':function () {
-        alert(SessionStore.get('myEmail'))
         if(SessionStore.get('myEmail')==' ')
         {
             location.href="/";

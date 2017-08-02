@@ -7,9 +7,12 @@ Template.proPage.onRendered(function() {
 Session.set('isChecked', false)
 
 Template.proPage.helpers({
-
-    isChecked: function() {
-        return todoDB.isComplete
+    projectDetail:function () {
+        var project = projectDB.find({_id:SessionStore.get('curProject')}).fetch();
+        return project;
+    },
+    isComplete: function() {
+        return Session.get('isChecked')
     },
 
     isEditing: function() {
@@ -22,17 +25,17 @@ Template.proPage.helpers({
     },
 
     array: function() {
-        return todoDB.find({}).fetch();
+        return todoDB.find({project_id:SessionStore.get('curProject')}).fetch();
     },
 
-    // percentage: function () {
-    //     var curProjectTodosCount = todoDB.find({project_id:'project DBs ID'}).count();
-    //     var curProjectTodosCompletedCount = todoDB.find({project_id:'project DBs ID', isComplete: true}).count();
-    //     if (curProjectTodosCount === 0) {
-    //         return 0;
-    //     }
-    //     return (curProjectTodosCompletedCount / curProjectTodosCount) * 100;
-    // }
+    percentage: function () {
+        var curProjectTodosCount = todoDB.find({project_id:SessionStore.get('curProject')}).count();
+        var curProjectTodosCompletedCount = todoDB.find({project_id:SessionStore.get('curProject'), isComplete: true}).count();
+        if (curProjectTodosCount === 0) {
+            return 0;
+        }
+        return (curProjectTodosCompletedCount / curProjectTodosCount) * 100;
+    }
 
 });
 
@@ -91,10 +94,11 @@ Template.proPage.events({
     // 할 일 추가
     'click #btnAdd': function(evt, tmpl) {
         var strAdd = $('#inpAdd').val();
+        alert(SessionStore.get('curProject'))
         todoDB.insert({
             createdAt: new Date(),
             todo: strAdd,
-            project_id:'project DBs ID',
+            project_id: SessionStore.get('curProject'),
             isComplete: false
         });
         $("#inpAdd").val('');
