@@ -44,6 +44,8 @@ Template.addProject.events({
         var startDate =  $('#inpStartDate').val();
         var endDate =  $('#inpEndDate').val();
         var isPublic = Session.get('isPublic');
+        var loginedId = SessionStore.get('myEmail');
+        var user = userDB.findOne({username: loginedId});
 
         // 빈칸을 모두 채우지 않을 경우 에러메세지 띄우고 돌아가기
         if((project_name === "" )||(project_goal ==="")||(startDate==="") ||(endDate==="") )
@@ -71,7 +73,8 @@ Template.addProject.events({
             createdAt: new Date(),
             project_id: project_id,
             member_username: SessionStore.get('myEmail'),
-            isAccepted: true
+            isAccepted: true,
+            name: user.name
         });
 
     }

@@ -5,10 +5,6 @@ Template.proPage.onRendered(function() {
 });
 
 Template.proPage.helpers({
-    projectDetail:function () {
-        var project = projectDB.find({_id:SessionStore.get('curProject')}).fetch();
-        return project;
-    },
     isComplete: function() {
         return Session.get('isChecked')
     },
@@ -34,15 +30,19 @@ Template.proPage.helpers({
             return 0;
         }
         return (curProjectTodosCompletedCount / curProjectTodosCount) * 100;
+    },
+
+    project: function () {
+        return projectDB.find({_id: SessionStore.get('curProject')}).fetch();
     }
 
 });
 
 Template.proPage.events({
 
-    // 할 일 체크박스 선택시 이벤트
+    // 할 일 체크
     'click #chBox': function(evt, tmpl) {
-        if ($("chBox").checked) {
+        if ($("chBox").checked) { //체크가 되어있으면
             todoDB.update({_id: this._id},
                 {
                     $set: {
@@ -93,7 +93,8 @@ Template.proPage.events({
     // 할 일 추가
     'click #btnAdd': function(evt, tmpl) {
         var strAdd = $('#inpAdd').val();
-        alert(SessionStore.get('curProject'))
+        var currentProject = SessionStore.get('curProject');
+
         todoDB.insert({
             createdAt: new Date(),
             todo: strAdd,

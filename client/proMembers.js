@@ -10,7 +10,10 @@ Template.proMembers.helpers({
         // 근데 두개를 join하여 화면에 형식에 맞게 출력해주고싶은데 잘 안된다.
 
         //차선 방안 : 그냥 projectMemberDB에 이름도 넣는다..
+    },
 
+    project: function () {
+        return projectDB.find({_id: SessionStore.get('curProject')}).fetch();
     }
 });
 
