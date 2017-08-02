@@ -18,10 +18,21 @@
 /* change border radius for the tab , apply corners on top*/
 
 #exTab3 .nav-pills > li > a {
-  border-radius: 4px 4px 0 0 ;
+  /*border-radius: 4px 4px 0 0 ;*/
+  border-radius: 0 0 0 0 ;
 }
 
 #exTab3 .tab-content {
   color : black;
   padding : 5px 15px;
+}
+
+#exTab3 .nav-pills > li {
+  text-align: center;
+}
+.glyphicon-list-alt {
+  font-size: 150%;
+}
+.glyphicon-user {
+  font-size: 150%;
 }
