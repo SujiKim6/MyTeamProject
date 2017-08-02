@@ -56,7 +56,7 @@ Template.addProject.events({
         // alert(SessionStore.get('myEmail'))
 
         // 빈칸을 모두 채웠을 경우 DB에 추가하기
-        var project_id = projectDB.insert({
+        var project_id = projectDB.push({
             createdAt: new Date(),
             name: project_name,
             goal: project_goal,
