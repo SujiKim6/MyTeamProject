@@ -22,22 +22,20 @@ Template.proPage.helpers({
         return todoDB.find({}).fetch();
     },
 
-    percentage: function () {
-        var curProjectTodosCount = todoDB.find({project_id:'project DBs ID'}).count();
-        var curProjectTodosCompletedCount = todoDB.find({project_id:'project DBs ID', isComplete: true}).count();
-        if (curProjectTodosCount === 0) {
-            return 0;
-        }
-        return (curProjectTodosCompletedCount / curProjectTodosCount) * 100;
-    }
+    // percentage: function () {
+    //     var curProjectTodosCount = todoDB.find({project_id:'project DBs ID'}).count();
+    //     var curProjectTodosCompletedCount = todoDB.find({project_id:'project DBs ID', isComplete: true}).count();
+    //     if (curProjectTodosCount === 0) {
+    //         return 0;
+    //     }
+    //     return (curProjectTodosCompletedCount / curProjectTodosCount) * 100;
+    // }
 
 });
 
 Template.proPage.events({
 
-
-
-    // 할 일 체크
+    // 할 일 체크박스 선택시 이벤트
     'click #chBox': function(evt, tmpl) {
         if ($("chBox").checked) {
             todoDB.update({_id: this._id},
@@ -95,7 +93,7 @@ Template.proPage.events({
             createdAt: new Date(),
             todo: strAdd,
             project_id:'project DBs ID',
-            isComplete: false
+            isComplete: true
         });
         $("#inpAdd").val('');
     }
