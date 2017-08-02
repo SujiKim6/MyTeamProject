@@ -5,8 +5,14 @@ Template.proPage.onRendered(function() {
 });
 
 Template.proPage.helpers({
+    array: function() {
+        return todoDB.find({project_id:SessionStore.get('curProject')}).fetch();
+    },
+
     isComplete: function() {
-        return Session.get('isChecked')
+        // alert(this.isComplete)
+        // return Session.get('isChecked')
+        return this.isComplete;
     },
 
     isEditing: function() {
@@ -16,10 +22,6 @@ Template.proPage.helpers({
         else {
             return false;
         }
-    },
-
-    array: function() {
-        return todoDB.find({project_id:SessionStore.get('curProject')}).fetch();
     },
 
     percentage: function () {
@@ -42,15 +44,7 @@ Template.proPage.events({
 
     // 할 일 체크
     'click #chBox': function(evt, tmpl) {
-        if ($("chBox").checked) { //체크가 되어있으면
-            todoDB.update({_id: this._id},
-                {
-                    $set: {
-                        isComplete: false
-                    }
-                });
-            Session.set('isChecked', false)
-        } else {
+        if ($(evt.target).is(':checked')) { //체크가 되어있으면
             todoDB.update({_id: this._id},
                 {
                     $set: {
@@ -58,6 +52,14 @@ Template.proPage.events({
                     }
                 });
             Session.set('isChecked', true)
+        } else {
+            todoDB.update({_id: this._id},
+                {
+                    $set: {
+                        isComplete: false
+                    }
+                });
+            Session.set('isChecked', false)
         }
     },
 
