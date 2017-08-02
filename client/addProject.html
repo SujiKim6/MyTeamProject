@@ -50,9 +50,9 @@
         </div> <br>
         <div>
             {{#if isPublic}}
-                <input class="form-control" type="text" placeholder="프로젝트 비밀번호를 입력하세요." style="visibility: hidden">
+                <input class="form-control" type="text, password" placeholder="프로젝트 비밀번호를 입력하세요." style="visibility: hidden">
             {{else}}
-                <input class="form-control" type="text" placeholder="프로젝트 비밀번호를 입력하세요.">
+                <input id="projectPwd" class="form-control" type="text, password" placeholder="프로젝트 비밀번호를 입력하세요.">
             {{/if}}
 
         </div> <br>
@@ -60,7 +60,7 @@
         <div class="row">
             <div class="col-xs-4 col-sm-4 col-md-4"></div>
             <div class="col-xs-4 col-sm-4 col-md-4">
-                <a id="confirmBtn" href="/proMain" class="btn btn-default" style="width: 100%">확인</a>
+                <a id="confirmBtn" class="btn btn-default" style="width: 100%">확인</a>
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4"></div>
         </div>

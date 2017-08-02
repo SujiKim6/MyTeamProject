@@ -13,7 +13,6 @@ Template.mypage.helpers({
         // 현재 사용자의 정보
         var loginedId = SessionStore.get('myEmail'); //로그인된 아이디
         var userInfo = userDB.find({username: loginedId}).fetch();
-        // var name = userDB.find({name: loginedId}).fetch();
         return userInfo;
     },
     // 변경 버튼을 눌렀을 때 UI 바꾸기

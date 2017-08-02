@@ -48,10 +48,15 @@ Template.addProject.events({
         var user = userDB.findOne({username: loginedId});
 
         // 빈칸을 모두 채우지 않을 경우 에러메세지 띄우고 돌아가기
-        if((project_name === "" )||(project_goal ==="")||(startDate==="") ||(endDate==="") )
+        if((project_name === "" )||(project_goal ==="")||(startDate==="") ||(endDate===""))
         {
             //error 메세지 띄우기
             alert("모든 정보를 입력하세요.");
+            return;
+        }
+        if(!isPublic && ($('#projectPwd').val()===""))
+        {
+            alert("프로젝트 비밀번호를 입력하세요.");
             return;
         }
 
@@ -76,6 +81,6 @@ Template.addProject.events({
             isAccepted: true,
             name: user.name
         });
-
+        location.href='/proMain';
     }
 })
