@@ -21,6 +21,7 @@ Template.login.events({
         else if($('#passwordInput').val() === userDB.findOne({username:$('#emailInput').val()}).password)
         {
             location.href="/proMain";
+            SessionStore.set('myEmail', $('#emailInput').val());
             return;
         }
 
@@ -31,6 +32,5 @@ Template.login.events({
             return;
         }
 
-        SessionStore.set('myEmail', $('emailInput').val());
     }
 });

@@ -52,8 +52,11 @@ Template.addProject.events({
             return;
         }
 
+        // 이메일이 제대로 들어갔는지 테스트
+        // alert(SessionStore.get('myEmail'))
+
         // 빈칸을 모두 채웠을 경우 DB에 추가하기
-        projectDB.insert({
+        var project_id = projectDB.insert({
             createdAt: new Date(),
             name: project_name,
             goal: project_goal,
@@ -62,5 +65,13 @@ Template.addProject.events({
             manager_username: SessionStore.get('myEmail'),
             isPublic: true
         });
+
+        projectMemberDB.insert({
+            createdAt: new Date(),
+            project_id: project_id,
+            member_username: SessionStore.get('myEmail'),
+            isAccepted: false
+        });
+
     }
 })

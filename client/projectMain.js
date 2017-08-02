@@ -9,6 +9,9 @@ Template.projectMain.helpers({
     array: function() {
         var projects = []; // 프로젝트명을 저장하는 배열
 
+        // 이메일이 제대로 들어갔는지 테스트
+        // alert(SessionStore.get('myEmail'))
+
         // 현재 사용자가 속한 프로젝트 찾기
         var memberDBs = projectMemberDB.find({member_username: SessionStore.get('myEmail')}).fetch();
 
