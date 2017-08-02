@@ -167,3 +167,12 @@ input:checked + .slider:before {
     text-align: center;
 
 }
+
+.item {
+    text-align: center;
+
+}
+
+.glyphicon.glyphicon-user {
+    font-size: 350%;
+}
