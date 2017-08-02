@@ -3,40 +3,42 @@
         <div id="profile">
 
         </div>
-        <div>
-            이메일 <p></p>
-            <div class="form-group">
-                <input class="form-control" id="focusedInput" type="text" placeholder="{{myEmail}}" readonly>
+        {{#each myInfo}}
+            <div>
+                이메일 <p></p>
+                <div class="form-group">
+                    <input class="form-control" id="focusedInput" type="text" placeholder={{username}} readonly>
+                </div>
             </div>
-        </div>
 
-        <div>
-            비밀번호 <p></p>
-            <div class="form-group">
-                <input class="form-control" id="focusedInput" placeholder="있던 비밀번호">
+            <div>
+                비밀번호 <p></p>
+                <div class="form-group">
+                    <input class="form-control" id="focusedInput" placeholder={{password}}>
+                </div>
             </div>
-        </div>
 
-        <div>
-            이름 <p></p>
-            <div class="form-group">
-                <input class="form-control" id="focusedInput" placeholder="있던 이름">
+            <div>
+                이름 <p></p>
+                <div class="form-group">
+                    <input class="form-control" id="focusedInput" placeholder={{nickname}}>
+                </div>
             </div>
-        </div>
 
-        <div>
-            소속 <p></p>
-            <div class="form-group">
-                <input class="form-control" id="focusedInput" placeholder="소속을 선택해주세요.">
+            <div>
+                소속 <p></p>
+                <div class="form-group">
+                    <input class="form-control" id="focusedInput" placeholder={{school}}>
+                </div>
             </div>
-        </div>
 
-        <div>
-            휴대폰 번호 <p></p>
-            <div class="form-group">
-                <input class="form-control" id="focusedInput" placeholder="번호로만 입력해주세요.">
+            <div>
+                휴대폰 번호 <p></p>
+                <div class="form-group">
+                    <input class="form-control" id="focusedInput" placeholder={{phone}}>
+                </div>
             </div>
-        </div>
+        {{/each}}
 
         <div>
             알림 팝업 설정 여부

@@ -16,8 +16,13 @@
             <div class="col-xs-6">
                 <!--<a href="/tab" id="btnProject" class="btn btn-default" style="padding: 80px; margin-bottom: 0.5cm">{{name}}</a>-->
                 <a href="/tab" id="btnProject" class="btn btn-default" style="width: 100%;height: 160px; margin-bottom: 0.5cm">
-                    <input id="getProjectID" value="{{_id}}"  >
-                    <p style="align-content: center">{{name}}</p>
+                    <div class="col-xs-12">
+                        <button id="btnDelete" type="button" style="float: center;">삭제</button>
+                    </div>
+                    <div class="col-xs-12">
+                        <input id="getProjectID" value="{{_id}}">
+                        <p style="align-content: center">{{name}}</p>
+                    </div>
                 </a>
             </div>
         {{/each}}

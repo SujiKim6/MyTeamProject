@@ -25,6 +25,13 @@ Template.projectMain.helpers({
 });
 
 Template.projectMain.events({
+    //프로젝트 삭제
+    'click #btnDelete': function(evt, tmpl) {
+        if(confirm('정말 삭제하시겠습니까?')) {
+            projectDB.remove({_id: this._id});
+        };
+    },
+
     // 프로젝트 선택
     'click #btnProject': function(evt, tmpl) {
         SessionStore.set('curProject',$('#getProjectID').val());
