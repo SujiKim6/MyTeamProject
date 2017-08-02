@@ -1,5 +1,47 @@
 Meteor.methods({
+    // 프로젝트 세부사항 수정
+    'updateProjectDetail':function (projectID,newProjectName, newStartDate,newEndDate, newProjectGoal) {
+        var updateRslt = projectDB.update({_id: projectID}, {
+            $set:{
+                name:newProjectName,
+                goal:newProjectGoal,
+                startAt:newStartDate,
+                endAt:newEndDate
+            }
+        });
+        if(updateRslt === 1){
+            return {
+                status:'success'
+            }
+        }
+        else{
+            return{
+                status: 'something goes wrong'
+            }
+        }
+    },
+    
+    // 마이페이지 변경 부분 server에서 처리하기
+    'updateUser': function(loginedId, newPassword, newName) {
+        var updateRslt = userDB.update({username: loginedId}, {
+            $set: {
+                password: newPassword,
+                name: newName
+            }
+        });
+        // user가 한명일 때 이렇게 되는거
+        if (updateRslt === 1) {
+            return {
+                status: 'success'
+            }
+        }
+        else {
+            return {
+                status: 'something goes wrong'
+            }
+        }
 
+    },
     // // 프로젝트를 편집하기
     // 'editProject': function(projectDB) {
     //     projectDB.update({_id: projectDB.project_id}, {

@@ -20,4 +20,4 @@ Router.route('/emailSend', 'emailSend');
 Router.route('/proPageEdit', 'proPageEdit');
 Router.route('/invite', 'invite');
 Router.route('/inviteSend', 'inviteSend');
-Router.route('/proPageEdit', 'projectPageEdit');
+Router.route('/tab/proPageEdit', 'projectPageEdit');
