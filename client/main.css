@@ -88,7 +88,7 @@ body { font-family: NanumGothic; }
     height: 26px;
     width: 26px;
     left: 4px;
-    bottom: 4px;
+    bottom: 4px;/**/
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;

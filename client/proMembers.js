@@ -76,7 +76,7 @@ Template.proMembers.events({
         if ((manager !== undefined)) { //응 매니저 맞음
 
             if (loginedId === this.member_username) {
-                alert('자기자신을 추방할 수 없습니다!');
+                alert('자기 자신을 추방할 수 없습니다!');
                 return;
             }
 
