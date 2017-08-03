@@ -31,7 +31,8 @@ Template.proPage.helpers({
         if (curProjectTodosCount === 0) { //0으로 못 나누므로 할일이 없으면 그냥 0% 처리한다
             return 0;
         }
-        return (curProjectTodosCompletedCount / curProjectTodosCount) * 100;
+
+        return Math.round((curProjectTodosCompletedCount / curProjectTodosCount) * 100)
     },
 
     project: function () {
