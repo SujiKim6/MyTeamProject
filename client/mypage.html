@@ -19,9 +19,9 @@
 
                 <div class="form-group">
                     {{#if change}}
-                        <input class="form-control" id="passwordInput" type="text" placeholder="새로운 패스워드를 입력하세요">
+                        <input class="form-control" id="passwordInput" type="password" placeholder="새로운 패스워드를 입력하세요">
                         <br>비밀번호 확인<p></p>
-                        <input class="form-control" id="passwordInputConfirm" type="text" placeholder="새로운 패스워드를 다시 한 번 입력하세요">
+                        <input class="form-control" id="passwordInputConfirm" type="password" placeholder="새로운 패스워드를 다시 한 번 입력하세요">
                     {{else}}
                         <input class="form-control" id="passwordInput" type="password" value={{password}} readonly>
                     {{/if}}
