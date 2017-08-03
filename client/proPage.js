@@ -61,7 +61,7 @@ Template.proPage.events({
                     location.href='/proMain';
                 }
                 else {
-                    alert('프로젝트 생성에 문제가 있습니다.');
+                    alert('프로젝트 삭제에 문제가 있습니다.');
                 }
             });
         };
