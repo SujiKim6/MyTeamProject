@@ -23,9 +23,15 @@ Meteor.methods({
 
     // 마이페이지 변경 부분 server에서 처리하기
     'updateUser': function(loginedId, newPassword, newName) {
-        var updateRslt = userDB.update({username: loginedId}, {
+        var updateRslt = userDB.update({username: loginedId}, { //실제 유저 디비의 이름 변경
             $set: {
                 password: newPassword,
+                name: newName
+            }
+        });
+
+        var result = projectMemberDB.update({member_username: loginedId}, { //프로젝트멤버 리스트 이름도 쫙 바꿔준다.
+            $set: {
                 name: newName
             }
         });
@@ -40,24 +46,6 @@ Meteor.methods({
                 status: 'something goes wrong'
             }
         }
-
-        var result = projectMemberDB.update({member_username: loginedId}, {
-            $set: {
-                name: newName
-            }
-        });
-
-        if (result > 0) { //최소 1개는 업데이트 됨
-            return {
-                status: 'success'
-            }
-        }
-        else {
-            return {
-                status: 'something goes wrong'
-            }
-        }
-
     },
     //탈퇴하기
     'removeUser': function(email) {

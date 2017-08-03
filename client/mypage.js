@@ -49,6 +49,7 @@ Template.mypage.events({
     },
 
     //변경버튼을 누른 다음에 창이 바뀌고 확인버튼 눌렀을 때 변경이 되야한다구
+    //정보변경 버튼
     'click #confirmChange': function () {
         var loginedId = $('#usernameInput').val();
         var newPassword = $('#passwordInput').val();
