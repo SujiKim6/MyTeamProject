@@ -8,6 +8,17 @@ Template.proPage.helpers({
     array: function() {
         return todoDB.find({project_id:SessionStore.get('curProject')}).fetch();
     },
+    startDate:function () {
+        var projectDetail = projectDB.findOne({_id: SessionStore.get('curProject')});
+        var date = projectDetail.startAt.format("yyyy-MM-dd");
+        return  date;
+    },
+
+    endDate:function () {
+        var projectDetail = projectDB.findOne({_id: SessionStore.get('curProject')});
+        var date = projectDetail.endAt.format("yyyy-MM-dd");
+        return  date;
+    },
 
     isComplete: function() {
         // alert(this.isComplete)
