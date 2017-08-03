@@ -101,11 +101,7 @@ Template.proMembers.events({
         var thisProject = projectDB.findOne({_id: currentProject});
 
         if (thisProject.manager_username === loginedId) { //매니저이면
-            if (loginedId === this.member_username) { //매니저로 위임하려 클릭한 대상이 이미 매니저(자신)임
-                alert('이미 매니저입니다.');
-                return;
-            }
-            
+
             if (confirm('매니저를 위임하시겠습니까?')) { //다른 사람을 매니저로 위임
                 Meteor.call('managerChange', memberDBs, function (err, rslt) {
                     if (rslt.status === 'success') { //성공
