@@ -25,12 +25,12 @@ Template.join.events({
 
         //이미 존재하는 계정이 있는 경우
         if (undefined !== userDB.findOne({username: email})) {
-            confirm('이미 회원이 존재합니다.');
+            alert('이미 회원이 존재합니다.');
             return;
         }
         //비밀번호와 비밀번호 확인이 다른 경우
         else if (password !== passwordConfirm) {
-            confirm('비밀번호와 비밀번호 확인이 다릅니다.');
+            alert('비밀번호와 비밀번호 확인이 다릅니다.');
             return;
         }
 
