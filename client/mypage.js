@@ -29,26 +29,21 @@ Template.mypage.events({
         if (confirm('정말 탈퇴하시겠습니까?')) {
             var managerProjectDBs=projectDB.find({manager_username: SessionStore.get('myEmail')}).fetch();
 
-            // 프로젝트에 매니저를 맡고 있지 않은 경우
-            for(var i=0; i<managerProjectDBs.length;i++) {
-                if (managerProjectDBs[i]._id === undefined) {
-                    Meteor.call('removeUser', SessionStore.get('myEmail'), function (err, rslt) {
-                        if (rslt.status === 'success') {
-                            // alert('s');
-                            SessionStore.set('myEmail', ' ');
-                            location.href = '/';
-                        }
-                        // else {
-                        //     alert('error');
-                        // }
-                    });
-                }
-
-                // 매니저를 맡고 있는 경우
-                else {
-                    alert('매니저를 맡고 있으면 탈퇴할 수 없습니다. 매니저를 위임해주세요.');
-                    location.href = '/proMain';
-                }
+            if(managerProjectDBs.length == 0){
+                Meteor.call('removeUser', SessionStore.get('myEmail'), function (err, rslt) {
+                    if (rslt.status === 'success') {
+                        // alert('s');
+                        SessionStore.set('myEmail', ' ');
+                        location.href = '/';
+                    }
+                    // else {
+                    //     alert('error');
+                    // }
+                });
+            }
+            else {
+                alert('매니저를 맡고 있으면 탈퇴할 수 없습니다. 매니저를 위임해주세요.');
+                location.href = '/proMain';
             }
         }
     },
