@@ -23,7 +23,7 @@ Template.projectMain.helpers({
     },
     leftDay:function () {
         //현재 프로젝트 가져오기
-        var currentProject = projectDB.findOne({_id: SessionStore.get('showLeftDay')});
+        var currentProject = projectDB.findOne({_id: this._id});
         var currentDate=new Date();
 
         var milSec = currentProject.endAt.getTime() - currentDate.getTime();

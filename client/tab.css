@@ -36,3 +36,7 @@
 .glyphicon-user {
   font-size: 150%;
 }
+
+.active tab:active{
+  background-color: #ffffff;
+}

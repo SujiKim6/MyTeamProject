@@ -48,7 +48,7 @@ Template.addProject.events({
         var user = userDB.findOne({username: loginedId});
 
         // 빈칸을 모두 채우지 않을 경우 에러메세지 띄우고 돌아가기
-        if((project_name === "" )||(project_goal ==="")||(startDate==="") ||(endDate===""))
+        if((project_name === "" )||(project_goal ==="")||($('#inpStartDate').val()==="") ||($('#inpEndDate').val()===""))
         {
             //error 메세지 띄우기
             alert("모든 정보를 입력하세요.");

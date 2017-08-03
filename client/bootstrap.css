@@ -4096,15 +4096,23 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .nav-pills > li > a {
     border-radius: 4px;
+    color: #ffffff;
+    background-color: #2fa4e7;
 }
 .nav-pills > li + li {
     margin-left: 2px;
 }
+/*.nav-pills > li.active > a,*/
+/*.nav-pills > li.active > a:hover,*/
+/*.nav-pills > li.active > a:focus {*/
+    /*color: #ffffff;*/
+    /*background-color: #2fa4e7;*/
+/*}*/
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
 .nav-pills > li.active > a:focus {
-    color: #ffffff;
-    background-color: #2fa4e7;
+    color: #3aa8e8;
+    background-color: #ffffff;
 }
 .nav-stacked > li {
     float: none;

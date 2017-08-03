@@ -15,7 +15,7 @@ Template.projectPageEdit.events({
         var newProjectGoal = $('#projectGoal').val();
 
         //필수 입력사항 빈칸 있으면 오류
-        if((newProjectName==="" ) || (newStartDate==="")||(newEndDate==="")||(newProjectGoal==="")) {
+        if((newProjectName==="" ) || ($('#inpStartDate').val()==="")||($('#inpEndDate').val()==="Invalid Date")||(newProjectGoal==="")) {
             //error 메세지 띄우기
             alert("빈칸을 모두 채워주세요.");
             return;
