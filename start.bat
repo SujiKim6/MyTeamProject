@@ -1,6 +1,6 @@
 set MONGO_URL=mongodb://1.255.55.20:30000/teamhub
 
-rem meteor
+meteor
 
 rem 는 주석
 
@@ -21,4 +21,4 @@ rem 안드로이드 에뮬레이터 실행
 rem meteor run android
 
 rem 안드로이드 실제 단말 실행
-meteor run android-device
+rem meteor run android-device

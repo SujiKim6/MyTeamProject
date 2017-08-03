@@ -32,9 +32,6 @@ Template.navbar.events({
             SessionStore.set('myEmail',' ');
             location.href="/";
         }
-        else {
-            location.href="/mypage";
-        }
     },
 
     //마이페이지 탭 눌렀을 때 처리
