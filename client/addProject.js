@@ -41,8 +41,8 @@ Template.addProject.events({
     'click #confirmBtn': function(evt, tmpl) {
         var project_name =  $('#projectName').val();
         var project_goal =  $('#projectGoal').val();
-        var startDate =  $('#inpStartDate').val();
-        var endDate =  $('#inpEndDate').val();
+        var startDate =  new Date($('#inpStartDate').val());
+        var endDate =  new Date($('#inpEndDate').val());
         var isPublic = Session.get('isPublic');
         var loginedId = SessionStore.get('myEmail');
         var user = userDB.findOne({username: loginedId});
