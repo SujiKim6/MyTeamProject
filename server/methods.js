@@ -12,6 +12,7 @@ Meteor.methods({
         }
     },
 
+    //
     // // 프로젝트를 편집하기
     // 'editProject': function(projectDB) {
     //     projectDB.update({_id: projectDB.project_id}, {
