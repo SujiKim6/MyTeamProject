@@ -40,11 +40,11 @@ Template.proMembers.events({
         //해당 회원이 userDB에 존재(팀허브에 가입된 회원)하면서, 팀원목록에 없으면 바로 앱 내에서 초대,
         if (invitedUser !== undefined) { //회원 존재하면 일단 넣음
 
-            if (alreadyJoined !== undefined) {
-                alert('이미 팀원 목록에 있습니다!');
-                $("#inviteInput").val("");
-                return;
-            }
+            // if (alreadyJoined !== undefined) {
+            //     alert('이미 팀원 목록에 있습니다!');
+            //     $("#inviteInput").val("");
+            //     return;
+            // }
 
             //회원등록, 그러나 Accepted 안된 상태
             projectMemberDB.insert({
@@ -101,6 +101,10 @@ Template.proMembers.events({
         var thisProject = projectDB.findOne({_id: currentProject});
 
         if (thisProject.manager_username === loginedId) { //매니저이면
+            if (loginedId === this.member_username) { //매니저로 위임하려 클릭한 대상이 이미 매니저(자신)임
+                alert('이미 매니저입니다.');
+                return;
+            }
 
             if (confirm('매니저를 위임하시겠습니까?')) { //다른 사람을 매니저로 위임
                 Meteor.call('managerChange', memberDBs, function (err, rslt) {

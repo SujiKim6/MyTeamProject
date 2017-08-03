@@ -31,7 +31,6 @@ Template.proPage.helpers({
         if (curProjectTodosCount === 0) { //0으로 못 나누므로 할일이 없으면 그냥 0% 처리한다
             return 0;
         }
-
         return Math.round((curProjectTodosCompletedCount / curProjectTodosCount) * 100)
     },
 
@@ -57,7 +56,11 @@ Template.proPage.events({
 
 
     'click #btnDelete': function(evt, tmpl) {
-        if(confirm('정말 삭제하시겠습니까?')) {
+
+        if (SessionStore.get('myEmail')!=projectDB.findOne({_id:SessionStore.get('curProject')}).manager_username) {
+            alert('매니저만 프로젝트를 삭제할 수 있습니다.');
+        }
+        else if (confirm('정말 삭제하시겠습니까?')) {
             Meteor.call('removeProject', SessionStore.get('curProject'), function(err, rslt) {
                 if(rslt.status === 'success') {
                     location.href='/proMain';
