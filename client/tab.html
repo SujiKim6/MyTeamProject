@@ -1,0 +1,24 @@
+<template name="tab">
+    <!-- projectMain에서 클릭할 시 들어오는 페이지 입니다. -->
+    <div id="exTab3" style="margin-top: -20px; ">
+        <ul  class="nav nav-pills">
+            <li class="active tab" id="">
+                <a  href="#1b" data-toggle="tab"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a>
+            </li>
+            <li class="tab">
+                <a href="#2b" data-toggle="tab"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></a>
+            </li>
+        </ul>
+
+        <div class="tab-content clearfix">
+            <div class="tab-pane active" id="1b">
+                <!-- 첫번째 탭 눌렀을 때 프로젝트 할일 리스트, 프로그래스바 있는 페이지 보여줌 -->
+                {{> proPage}}
+            </div>
+            <div class="tab-pane" id="2b">
+                <!-- 두번째 탭 눌렀을 때 사람 리스트 보여줌 -->
+                {{> proMembers}}
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,7 +1,38 @@
 <template name="projectMain">
-    <div>
-        <div class="well">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+
+    {{#if isAlram}}
+        <div row>
+            <div class="col-xs-12">
+                <div class="alert alert-info" role="alert">
+                    새로운 프로젝트 멤버 요청이 있습니다.
+                    <button id="accept" type="button" style="float: inherit;">수락</button>
+                    <button id="refuse" type="button" style="float: right;">거절</button>
+                </div>
+            </div>
         </div>
-    </div>
-</template>
+    {{/if}}
+
+        <!--<div class="container">-->
+        <table class="table">
+            <div class="row" style="text-align: center">
+                {{#each array}}
+                    <div class="col-xs-6 col-sm-3 col-md-3">
+                        <!--<a href="/tab" id="btnProject" class="btn btn-default" style="padding: 80px; margin-bottom: 0.5cm">{{name}}</a>-->
+                        <a href="/tab" id="btnProject" class="btn btn-default" style="width: 171px;height: 180px; margin-bottom: 0.5cm">
+                            <div style="margin-top: 45%">
+                                <p style="align-content: center">{{name}}</p>
+                                <p style="align-content: center; font-size: x-small">{{leftDay}}일 남음</p>
+                            </div>
+                        </a>
+                    </div>
+                {{/each}}
+
+                <div class="col-xs-6 col-sm-3 col-md-3" style="">
+                    <a href="/addProject" class="btn btn-default" style="width: 171px; height: 180px; margin-bottom: 0.5cm" >
+                        <span class="glyphicon glyphicon-plus" style="margin-top: 45%"></span>
+                    </a>
+                </div>
+            </div>
+        </table>
+
+ </template>

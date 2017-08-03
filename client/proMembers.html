@@ -1,0 +1,55 @@
+<template name="proMembers">
+
+    <div class="container">
+        <br>
+        {{#each project}}
+            <div id="title2">{{name}} 의 구성원</div> <br>
+        {{/each}}
+        <div style="text-align: right">프로젝트 참여인원 : {{count}}명</div>
+
+        <br>
+    </div>
+
+    <div class="col-xs-12">
+        <table class="table table-condensed">
+            <tr>
+                <th width="5%" class="usertb"></th>
+                <th width="28%" class="usertb">이름</th>
+                <th width="37%" class="usertb">이메일</th>
+                <th width="30%" class="usertb">추방 / 위임</th>
+            </tr>
+            {{#each members}}
+                <tr>
+                    {{#if isManager}}
+                        <td class="usertb"><span id="iconDelete" class="glyphicon glyphicon-star" aria-hidden="true"></span></td>
+                    {{else}}
+                        <td class="usertb"></td>
+                    {{/if}}
+                    <td class="usertb">{{name}}</td>
+                    <td id='username' class="usertb">{{member_username}}</td>
+                    <td class="usertb">
+                        <span id="iconDelete" class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp; &nbsp; &nbsp;
+                        <span id="giveManager" class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+                    </td>
+                </tr>
+            {{/each}}
+        </table>
+    </div>
+
+    <div class="col-xs-12">
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                팀원 초대하기 <span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <div>
+                    <div class="input-group">
+                        <input id="inviteInput" type="text" class="form-control" placeholder="초대할 팀원의 이메일을 입력하세요." aria-describedby="basic-addon2">
+                        <span class="input-group-addon" id="basic-addon2"><button id="inviteBtn" type="button">초대</button></span>
+                    </div>
+                </div>
+            </ul>
+        </div>
+    </div>
+
+</template>

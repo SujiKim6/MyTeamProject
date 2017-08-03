@@ -1,53 +1,80 @@
 <template name="mypage">
-    <div id="profile">
+    <div class="container">
+        <div id="profile">
 
-    </div>
-    <div>
-        이메일 <p></p>
-        <div class="form-group">
-            <input class="form-control" id="focusedInput" placeholder="원래 있던 이메일">
         </div>
-    </div>
-
-    <div>
-        비밀번호 <p></p>
-        <div class="form-group">
-            <input class="form-control" id="focusedInput" placeholder="있던 비밀번호">
+        <div class="item">
+            <span class="glyphicon glyphicon-user" id="myPageGlyphicon" aria-hidden="true"></span>
         </div>
-    </div>
+        {{#each myInfo}}
+            <div>
+                이메일 <p></p>
+                <div class="form-group">
+                    <input class="form-control" id="usernameInput" type="text" value={{username}} readonly>
+                </div>
+            </div>
 
-    <div>
-        이름 <p></p>
-        <div class="form-group">
-            <input class="form-control" id="focusedInput" placeholder="있던 이름">
+            <div>
+                비밀번호 <p></p>
+
+                <div class="form-group">
+                    {{#if change}}
+                        <input class="form-control" id="passwordInput" type="text" placeholder="새로운 패스워드를 입력하세요">
+                        <br>비밀번호 확인<p></p>
+                        <input class="form-control" id="passwordInputConfirm" type="text" placeholder="새로운 패스워드를 다시 한 번 입력하세요">
+                    {{else}}
+                        <input class="form-control" id="passwordInput" type="password" value={{password}} readonly>
+                    {{/if}}
+                </div>
+            </div>
+
+            <div>
+                이름 <p></p>
+                <div class="form-group">
+                    {{#if change}}
+                        <input class="form-control" id="nameInput" type="text" placeholder="새로운 이름을 입력하세요">
+                    {{else}}
+                        <input class="form-control" id="nameInput" value={{name}} readonly>
+                    {{/if}}
+                </div>
+            </div>
+
+            <!--<div>-->
+            <!--소속 <p></p>-->
+            <!--<div class="form-group">-->
+            <!--<input class="form-control" id="schoolInput" value={{school}}>-->
+            <!--</div>-->
+            <!--</div>-->
+
+            <!--<div>-->
+            <!--휴대폰 번호 <p></p>-->
+            <!--<div class="form-group">-->
+            <!--<input class="form-control" id="phoneInput" value={{phone}}>-->
+            <!--</div>-->
+            <!--</div>-->
+        {{/each}}
+
+        <!--<div>-->
+        <!--알림 팝업 설정 여부-->
+        <!--&lt;!&ndash; Rounded switch &ndash;&gt;-->
+        <!--<label class="switch">-->
+        <!--<input type="checkbox">-->
+        <!--<span class="slider round"></span>-->
+        <!--</label>-->
+        <!--</div>-->
+
+        <p></p>
+        <div id="wrapper">
+            {{#if change}}
+
+                <a class="btn btn-block" id="memberOut">탈퇴하기</a><p></p>
+                <a class="btn btn-default" id="goBackToMyPage">돌아가기</a>
+                <a class="btn btn-primary" id="confirmChange">확인</a>
+            {{else}}
+                <!-- 확인 버튼을 누를 경우 proMain으로 갑니다. -->
+                <a href="/proMain" class="btn btn-default" id="goBack">돌아가기</a>
+                <a href="#" class="btn btn-primary" id="change">변경</a>
+            {{/if}}
         </div>
-    </div>
-
-    <div>
-        소속 <p></p>
-        <div class="form-group">
-            <input class="form-control" id="focusedInput" placeholder="소속을 선택해주세요.">
-        </div>
-    </div>
-
-    <div>
-        휴대폰 번호 <p></p>
-        <div class="form-group">
-            <input class="form-control" id="focusedInput" placeholder="번호로만 입력해주세요.">
-        </div>
-    </div>
-
-    <div>
-        알림 팝업 설정 여부
-        <!-- Rounded switch -->
-        <label class="switch">
-            <input type="checkbox">
-            <span class="slider round"></span>
-        </label>
-    </div>
-
-    <p></p>
-    <div id="wrapper">
-        <a href="#" class="btn btn-primary" id="confirm">확인</a>
     </div>
 </template>
