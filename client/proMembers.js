@@ -40,12 +40,7 @@ Template.proMembers.events({
         //해당 회원이 userDB에 존재(팀허브에 가입된 회원)하면서, 팀원목록에 없으면 바로 앱 내에서 초대,
         if (invitedUser !== undefined) { //회원 존재하면 일단 넣음
 
-            //이미 회원이 있음 : 왜안돼 ㅅㅂ
-            /*if(alreadyJoinedMember !== undefined) {
-                alert('이미 팀원 목록에 회원이 있습니다!')
-                return;
-            }*/
-
+            //중복초대 금지
 
             //회원등록, 그러나 Accepted 안된 상태
             projectMemberDB.insert({
