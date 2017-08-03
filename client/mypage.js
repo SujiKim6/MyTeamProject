@@ -81,7 +81,7 @@ Template.mypage.events({
                 // alert('success');
                 if(confirm("변경이 완료되었습니다.")){
                     Session.set('clickedChange',false);
-                    location.href='/proMain';
+                    location.href='/mypage';
                 }
             }
 
