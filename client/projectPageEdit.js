@@ -10,8 +10,8 @@ Template.projectPageEdit.events({
     'click #confirmBtn':function () {
         var projectID=SessionStore.get('curProject');
         var newProjectName = $('#projectName').val();
-        var newStartDate = $('#inpStartDate').val();
-        var newEndDate = $('#inpEndDate').val();
+        var newStartDate = new Date($('#inpStartDate').val());
+        var newEndDate = new Date($('#inpEndDate').val());
         var newProjectGoal = $('#projectGoal').val();
 
         //필수 입력사항 빈칸 있으면 오류
