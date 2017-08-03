@@ -46,6 +46,8 @@ Template.proMembers.events({
                 return;
             }*/
 
+            //
+
 
             //회원등록, 그러나 Accepted 안된 상태
             projectMemberDB.insert({

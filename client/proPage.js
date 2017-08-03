@@ -41,24 +41,12 @@ Template.proPage.helpers({
 });
 
 Template.proPage.events({
-    // // 프로젝트를 편집하기
-    // 'click #btnEdit': function(evt, tmpl) {
-    //     Meteor.call('editProject', projectDB.find({_id: SessionStore.get('curProject')}).fetch(), function(err, rslt) {
-    //         if(rslt.status === 'success') {
-    //
-    //         }
-    //         else {
-    //
-    //         }
-    //     });
-    //
-    // },
-
-
+    //프로젝트 삭제
     'click #btnDelete': function(evt, tmpl) {
 
         if (SessionStore.get('myEmail')!=projectDB.findOne({_id:SessionStore.get('curProject')}).manager_username) {
             alert('매니저만 프로젝트를 삭제할 수 있습니다.');
+            return;
         }
         else if (confirm('정말 삭제하시겠습니까?')) {
             Meteor.call('removeProject', SessionStore.get('curProject'), function(err, rslt) {
@@ -103,16 +91,9 @@ Template.proPage.events({
         Session.set('editingId','')
     },
 
+    //할일 수정
     'click #iconEdit': function(evt, tmpl) {
         Session.set('editingId',this._id)
-        // Meteor.call('editTodo', function(err, rslt) {
-        //     alert(rslt.status)
-        //     if(rslt.status === 'success') {
-        //     }
-        //     else {
-        //         alert('프로젝트 생성에 문제가 있습니다.');
-        //     }
-        // });
     },
 
     // 할 일 삭제
