@@ -9,7 +9,7 @@ projectMemberDB = new Mongo.Collection('projectMemberDB');
 // var user = {
 //     createdAt: new Date(),
 //     username: 'email',
-//     name: '진짜 이르으으응ㅁ'
+//     name: 'real name'
 //     password: 'password'
 //     phone: '변경창에서 선택적으로 입력할 내용'
 //     school: '소속(학교, 학과)'

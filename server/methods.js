@@ -46,6 +46,7 @@ Meteor.methods({
     'removeUser': function(email) {
         userDB.remove({username: email});
         projectMemberDB.remove({member_username: email});
+        console.log()
         return {
             status: 'success'
         }
