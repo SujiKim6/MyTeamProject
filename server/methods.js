@@ -41,6 +41,23 @@ Meteor.methods({
             }
         }
 
+        var result = projectMemberDB.update({member_username: loginedId}, {
+            $set: {
+                name: newName
+            }
+        });
+
+        if (result > 0) { //최소 1개는 업데이트 됨
+            return {
+                status: 'success'
+            }
+        }
+        else {
+            return {
+                status: 'something goes wrong'
+            }
+        }
+
     },
     //탈퇴하기
     'removeUser': function(email) {

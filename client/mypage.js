@@ -91,14 +91,6 @@ Template.mypage.events({
             }
 
         });
-        //회원 업데이트
-        // var result = userDB.update({username: loginedId}, {
-        //     $set: {
-        //         password: newPassword,
-        //         name: newName
-        //     }
-        // });
-        // alert(result);
 
     },
 
