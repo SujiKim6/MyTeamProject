@@ -43,6 +43,7 @@ Template.proMembers.events({
             for(var i = 0; i < memberDBs.length; i++) {
                 if (invitedUserEmail == memberDBs[i].member_username) {
                     alert('이미 팀원 목록에 있습니다!');
+                    $("#inviteInput").val("");
                     return;
                 }
             }

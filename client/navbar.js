@@ -32,7 +32,6 @@ Template.navbar.events({
             SessionStore.set('myEmail',' ');
         }
         else {
-            location.href="/mypage";
         }
     },
 
