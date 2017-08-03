@@ -101,21 +101,21 @@ Template.proMembers.events({
         var thisProject = projectDB.findOne({_id: currentProject});
 
         if (thisProject.manager_username === loginedId) { //매니저이면
-            if (loginedId === this.member_username) {
+            if (loginedId === this.member_username) { //매니저로 위임하려 클릭한 대상이 이미 매니저(자신)임
                 alert('이미 매니저입니다.');
                 return;
             }
-            //해당 프로젝트가 맞고, 현재 사용자가 매니저라면 위임이 가능함
-            if (confirm('매니저를 위임하시겠습니까?')) {
+            
+            if (confirm('매니저를 위임하시겠습니까?')) { //다른 사람을 매니저로 위임
                 Meteor.call('managerChange', memberDBs, function (err, rslt) {
-                    if (rslt.status === 'success') {
+                    if (rslt.status === 'success') { //성공
                     }
                     else {
                         alert('매니저 위임 실패')
                     }
                 });
             }
-        } else { //매니저 아니면
+        } else { //매니저가 아닌데 위임 버튼을 클릭한 경우
             alert('매니저만 위임할 수 있습니다.');
         }
 
