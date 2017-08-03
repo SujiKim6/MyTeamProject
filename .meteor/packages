@@ -23,3 +23,4 @@ iron:router
 twbs:bootstrap
 session
 smeevil:session-store
+crosswalk
