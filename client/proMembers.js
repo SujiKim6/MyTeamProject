@@ -62,7 +62,9 @@ Template.proMembers.events({
         var manager = projectDB.findOne({$and: [{_id: currentProject}, {manager_username: loginedId}]}); //지금 로그인한 놈이 현재 프로젝트의 매니저인가?
         if (manager !== undefined) { //응 매니저 맞음
             //회원 추방 가능
-            projectMemberDB.remove({_id: this._id}); //클릭한 놈(추방할 대상)의 아이디로 찾아서 삭제
+            if (alert('회원을 추방하시겠습니까?')) {
+                projectMemberDB.remove({_id: this._id}); //클릭한 놈(추방할 대상)의 아이디로 찾아서 삭제
+            }
         } else { //매니저 아님
             confirm('매니저만 추방할 수 있습니다.');
         }
