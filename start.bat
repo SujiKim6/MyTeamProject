@@ -18,7 +18,7 @@ rem 프로젝트에 안드로이드 플랫폼 개발환경 추가
 rem meteor add-platform android
 
 rem 안드로이드 에뮬레이터 실행
-rem meteor run android
+meteor run android
 
 rem 안드로이드 실제 단말 실행
 rem meteor run android-device

@@ -30,6 +30,7 @@ Template.navbar.events({
     'click #signOut':function () {
         if(confirm('정말 로그아웃 하시겠습니까?')) {
             SessionStore.set('myEmail',' ');
+            location.href="/";
         }
         else {
         }
