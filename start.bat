@@ -1,7 +1,5 @@
 set MONGO_URL=mongodb://1.255.55.20:30000/teamhub
 
-meteor
-
 rem 는 주석
 
 rem 아래는 ANDROID_HOME variable이 없다고 실행시에 에러가 날경우 등록 (자신의 안드로이드 sdk 디렉토리를 입력)
@@ -19,7 +17,7 @@ rem 프로젝트에 안드로이드 플랫폼 개발환경 추가
 rem meteor add-platform android
 
 rem 안드로이드 에뮬레이터 실행
-rem meteor run android
+meteor run android
 
 rem 안드로이드 실제 단말 실행
 rem meteor run android-device
