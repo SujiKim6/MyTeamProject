@@ -35,9 +35,17 @@ Template.proMembers.events({
         var invitedUserEmail = $('#inviteInput').val(); //인풋박스(inviteInput)에 입력된 회원의 아이디(이메일)를 가져옴
         var invitedUser = userDB.findOne({username: invitedUserEmail}); //초대할 사람의 email을 userDB에서 검색
         var currentProject = SessionStore.get('curProject'); //프로젝트 _id값
+        var alreadyJoined = projectMemberDB.find({member_username: invitedUserEmail}); //팀원 목록에 있다면 결과가 들어있을것임
 
-        //해당 회원이 userDB에 존재(팀허브에 가입된 회원)하면 바로 앱 내에서 초대,
+        //해당 회원이 userDB에 존재(팀허브에 가입된 회원)하면서, 팀원목록에 없으면 바로 앱 내에서 초대,
         if (invitedUser !== undefined) { //회원 존재하면 일단 넣음
+
+            if (alreadyJoined !== undefined) {
+                alert('이미 팀원 목록에 있습니다!');
+                $("#inviteInput").val("");
+                return;
+            }
+
             //회원등록, 그러나 Accepted 안된 상태
             projectMemberDB.insert({
                 createdAt: new Date(),
@@ -46,10 +54,14 @@ Template.proMembers.events({
                 isAccepted: true, //일단 임시로 되는걸로 함, 원래는 false가 기본값이고 수락 버튼 눌러야 true되는거임
                 name: invitedUser.name
             });
+
+            $("#inviteInput").val("");
         }
         //해당 회원이 userDB에 존재하지않으면 초대 이메일을 보냄 - 추후 구현
         else {
             alert('해당 회원 정보가 없습니다.')
+
+            $("#inviteInput").val("");
         }
     },
 
