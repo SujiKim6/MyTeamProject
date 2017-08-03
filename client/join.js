@@ -40,6 +40,9 @@ Template.join.events({
             name: username
         })
 
+        // alert($('#emailInput').val());
+        SessionStore.set('myEmail',$('#emailInput').val());
+
         location.href="/emailSend";
     }
 });

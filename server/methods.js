@@ -42,7 +42,7 @@ Meteor.methods({
         }
 
     },
-    //회원 탈퇴하기
+    //탈퇴하기
     'removeUser': function(email) {
         userDB.remove({username: email});
         projectMemberDB.remove({member_username: email});
@@ -62,7 +62,7 @@ Meteor.methods({
             status: 'success'
         }
     },
-
+    
     // 프로젝트 삭제하기
     'removeProject': function(project_id) {
         projectDB.remove({_id: project_id});
@@ -71,7 +71,6 @@ Meteor.methods({
             status: 'success'
         }
     }
-
     // 할 일 수정하기
     // 'editTodo' :function(data) {
     //     todoDB.update({_id: data._id}, {
