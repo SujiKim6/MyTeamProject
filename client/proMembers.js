@@ -35,9 +35,17 @@ Template.proMembers.events({
         var invitedUserEmail = $('#inviteInput').val(); //인풋박스(inviteInput)에 입력된 회원의 아이디(이메일)를 가져옴
         var invitedUser = userDB.findOne({username: invitedUserEmail}); //초대할 사람의 email을 userDB에서 검색
         var currentProject = SessionStore.get('curProject'); //프로젝트 _id값
+        var alreadyJoined = projectMemberDB.find({member_username: invitedUserEmail}); //팀원 목록에 있다면 결과가 들어있을것임
 
-        //해당 회원이 userDB에 존재(팀허브에 가입된 회원)하면 바로 앱 내에서 초대,
+        //해당 회원이 userDB에 존재(팀허브에 가입된 회원)하면서, 팀원목록에 없으면 바로 앱 내에서 초대,
         if (invitedUser !== undefined) { //회원 존재하면 일단 넣음
+
+            if (alreadyJoined !== undefined) {
+                alert('이미 팀원 목록에 있습니다!');
+                $("#inviteInput").val("");
+                return;
+            }
+
             //회원등록, 그러나 Accepted 안된 상태
             projectMemberDB.insert({
                 createdAt: new Date(),
@@ -46,10 +54,14 @@ Template.proMembers.events({
                 isAccepted: true, //일단 임시로 되는걸로 함, 원래는 false가 기본값이고 수락 버튼 눌러야 true되는거임
                 name: invitedUser.name
             });
+
+            $("#inviteInput").val("");
         }
         //해당 회원이 userDB에 존재하지않으면 초대 이메일을 보냄 - 추후 구현
         else {
             alert('해당 회원 정보가 없습니다.')
+
+            $("#inviteInput").val("");
         }
     },
 
@@ -60,9 +72,19 @@ Template.proMembers.events({
         var currentProject = SessionStore.get('curProject');
 
         var manager = projectDB.findOne({$and: [{_id: currentProject}, {manager_username: loginedId}]}); //지금 로그인한 놈이 현재 프로젝트의 매니저인가?
-        if (manager !== undefined) { //응 매니저 맞음
+        //디스가 프로젝트 매니저가아니어야함
+        if ((manager !== undefined)) { //응 매니저 맞음
+
+            if (loginedId === this.member_username) {
+                alert('자기자신을 추방할 수 없습니다!');
+                return;
+            }
+
             //회원 추방 가능
-            projectMemberDB.remove({_id: this._id}); //클릭한 놈(추방할 대상)의 아이디로 찾아서 삭제
+            if (confirm('회원을 추방하시겠습니까?')) {
+                projectMemberDB.remove({_id: this._id}); //클릭한 놈(추방할 대상)의 아이디로 찾아서 삭제
+                return;
+            }
         } else { //매니저 아님
             confirm('매니저만 추방할 수 있습니다.');
         }
@@ -73,22 +95,28 @@ Template.proMembers.events({
         // alert('run')
         var loginedId = SessionStore.get('myEmail'); //현재 로그인 된 회원의 아이디
         var user = projectMemberDB.findOne({member_username: loginedId}); //현재 로그인된 회원
-        var manager = projectDB.findOne({manager_username: loginedId}); //로그인 된 사람이 매니저이면 나오고, 아니면 undefined
         var currentProject = SessionStore.get('curProject');
-
         var memberDBs = projectMemberDB.findOne({_id: this._id});
+        //현재 프로젝트의 매니저
+        var thisProject = projectDB.findOne({_id: currentProject});
 
-        if (manager !== undefined) {
-            //해당 프로젝트가 맞고, 현재 사용자가 매니저라면 위임이 가능함
-            if (confirm('매니저를 위임하시겠습니까?')) {
+        if (thisProject.manager_username === loginedId) { //매니저이면
+            if (loginedId === this.member_username) { //매니저로 위임하려 클릭한 대상이 이미 매니저(자신)임
+                alert('이미 매니저입니다.');
+                return;
+            }
+            
+            if (confirm('매니저를 위임하시겠습니까?')) { //다른 사람을 매니저로 위임
                 Meteor.call('managerChange', memberDBs, function (err, rslt) {
-                    if (rslt.status === 'success') {
+                    if (rslt.status === 'success') { //성공
                     }
                     else {
                         alert('매니저 위임 실패')
                     }
                 });
             }
+        } else { //매니저가 아닌데 위임 버튼을 클릭한 경우
+            alert('매니저만 위임할 수 있습니다.');
         }
 
         //매니저위임 - 서버에서 처리할것

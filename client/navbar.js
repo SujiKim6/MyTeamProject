@@ -4,6 +4,13 @@ $(function() {
     });
 });
 
+Template.navbar.helpers({
+    user: function () {
+        var user = userDB.findOne({username: SessionStore.get('myEmail')});
+        return user.name
+    }
+});
+
 Template.navbar.events({
     //teamhub 눌렀을 때 처리
     'click #brandName':function () {

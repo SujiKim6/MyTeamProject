@@ -14,7 +14,6 @@ rem 위 경로에서 android sdk의 tools 부분을 다운로드 받아서 압�
 rem 자세한 참조문서
 rem https://stackoverflow.com/questions/42613882/error-could-not-find-gradle-wrapper-within-android-sdk-might-need-to-update-yo
 
-
 rem 프로젝트에 안드로이드 플랫폼 개발환경 추가
 rem meteor add-platform android
 
