@@ -18,6 +18,11 @@ Template.mypage.helpers({
     // 변경 버튼을 눌렀을 때 UI 바꾸기
     change:function () {
         return Session.get('clickedChange');
+    },
+
+    name: function () {
+        var user = userDB.findOne({username: SessionStore.get('myEmail')});
+        return user.name
     }
 });
 
