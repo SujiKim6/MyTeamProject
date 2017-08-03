@@ -31,6 +31,9 @@ Template.navbar.events({
         if(confirm('정말 로그아웃 하시겠습니까?')) {
             SessionStore.set('myEmail',' ');
         }
+        else {
+            location.href="/mypage";
+        }
     },
 
     //마이페이지 탭 눌렀을 때 처리
