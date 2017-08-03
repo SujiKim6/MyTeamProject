@@ -95,12 +95,12 @@ Template.proMembers.events({
         // alert('run')
         var loginedId = SessionStore.get('myEmail'); //현재 로그인 된 회원의 아이디
         var user = projectMemberDB.findOne({member_username: loginedId}); //현재 로그인된 회원
-        var manager = projectDB.findOne({manager_username: loginedId}); //로그인 된 사람이 매니저이면 나오고, 아니면 undefined
         var currentProject = SessionStore.get('curProject');
-
         var memberDBs = projectMemberDB.findOne({_id: this._id});
+        //현재 프로젝트의 매니저
+        var thisProject = projectDB.findOne({_id: currentProject});
 
-        if (manager !== undefined) {
+        if (thisProject.manager_username === loginedId) { //매니저이면
             if (loginedId === this.member_username) {
                 alert('이미 매니저입니다.');
                 return;
@@ -115,6 +115,8 @@ Template.proMembers.events({
                     }
                 });
             }
+        } else { //매니저 아니면
+            alert('매니저만 위임할 수 있습니다.');
         }
 
         //매니저위임 - 서버에서 처리할것
