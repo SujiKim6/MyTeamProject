@@ -55,14 +55,15 @@ Template.proPage.events({
     //
     // },
 
+
     'click #btnDelete': function(evt, tmpl) {
-        if(alert('정말 삭제하시겠습니까?')) {
+        if(confirm('정말 삭제하시겠습니까?')) {
             Meteor.call('removeProject', SessionStore.get('curProject'), function(err, rslt) {
                 if(rslt.status === 'success') {
                     location.href='/proMain';
                 }
                 else {
-                    alert('프로젝트 생성에 문제가 있습니다.');
+                    alert('프로젝트 삭제에 문제가 있습니다.');
                 }
             });
         };
